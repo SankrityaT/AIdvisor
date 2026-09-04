@@ -6,12 +6,12 @@ const steps = [
     body: (
       <>
         Type it like you&apos;d say it. &quot;Can I still make it to grad
-        school if I drop this class?&quot; — Sol gets it.
+        school if I drop this class?&quot; — AIVISOR gets it.
       </>
     ),
   },
   {
-    title: "Sol checks the source",
+    title: "AIVISOR checks the source",
     body: (
       <>
         It reads official ASU policies, your degree check, and your campus
@@ -23,7 +23,7 @@ const steps = [
     title: "Get a clear answer",
     body: (
       <>
-        Short, direct, with next steps. And when it matters, Sol hands you to
+        Short, direct, with next steps. And when it matters, AIVISOR hands you to
         a human — advisor, counseling, or financial aid.
       </>
     ),
@@ -39,7 +39,7 @@ export default function HowItWorks() {
             <span className="mono">How it works</span>
             <h2>Three steps. No appointment needed.</h2>
             <p>
-              Sol is built to replace the &quot;should I email my
+              AIVISOR is built to replace the &quot;should I email my
               advisor?&quot; loop. You ask, it checks, you know.
             </p>
           </div>

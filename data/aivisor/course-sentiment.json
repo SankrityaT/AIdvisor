@@ -1,0 +1,157 @@
+[
+  {
+    "code": "CSE110",
+    "difficulty": "easy",
+    "blurb": "Gentle intro if you've touched code before, but the auto-grader takes off points for whitespace, so read the spec twice before submitting."
+  },
+  {
+    "code": "MAT265",
+    "difficulty": "medium",
+    "blurb": "Weekly WebAssign is where the grade actually lives; skip two sets and you're suddenly climbing out of a hole."
+  },
+  {
+    "code": "ENG101",
+    "difficulty": "easy",
+    "blurb": "Low stress but constant output — something is due nearly every week, so it quietly eats evenings you meant to spend on CSE110."
+  },
+  {
+    "code": "COM225",
+    "difficulty": "easy",
+    "blurb": "Six graded speeches and almost no homework; painless unless standing in front of thirty people wrecks you."
+  },
+  {
+    "code": "CSE205",
+    "difficulty": "medium",
+    "blurb": "The real weed-out for a lot of people — projects jump from 100 lines to 600 overnight and the linked-list assignment eats a full weekend."
+  },
+  {
+    "code": "MAT266",
+    "difficulty": "medium",
+    "blurb": "Series and convergence tests are the wall; the final is cumulative and heavily curved, so don't panic at the midterm score."
+  },
+  {
+    "code": "MAT243",
+    "difficulty": "medium",
+    "blurb": "First class where you write proofs instead of computing answers — the induction unit is the hinge, and partial credit is generous if you show structure."
+  },
+  {
+    "code": "ENG102",
+    "difficulty": "easy",
+    "blurb": "One long research paper built in stages, so it's very manageable if you keep up with the drafts and brutal if you don't."
+  },
+  {
+    "code": "CSE240",
+    "difficulty": "medium",
+    "blurb": "C pointers and memory management catch everyone who's only written Java; the exams are closed-note and code-by-hand."
+  },
+  {
+    "code": "CSE355",
+    "difficulty": "hard",
+    "blurb": "Proof-heavy and unforgiving — pumping lemma and Turing reductions on timed exams, no partial credit for a wrong construction, and the average midterm sits in the 50s."
+  },
+  {
+    "code": "MAT342",
+    "difficulty": "medium",
+    "blurb": "Mechanical at first, then abruptly abstract at eigenvectors and vector spaces; office hours are worth it that month."
+  },
+  {
+    "code": "CHM113",
+    "difficulty": "medium",
+    "blurb": "The lecture is fine, the lab is the time sink — pre-labs plus formal write-ups add four or five hours every week."
+  },
+  {
+    "code": "CSE230",
+    "difficulty": "medium",
+    "blurb": "MIPS assembly is tedious more than hard; debugging is slow, but the projects are small and the exams are predictable."
+  },
+  {
+    "code": "CSE310",
+    "difficulty": "hard",
+    "blurb": "Heavy but fair — this is the class recruiters actually test you on, and the weekly implementation assignments each take a solid six to eight hours."
+  },
+  {
+    "code": "CSE360",
+    "difficulty": "medium",
+    "blurb": "Content is light, coordination is not: your grade is largely a group project, so the team you land on decides your semester."
+  },
+  {
+    "code": "PHY121",
+    "difficulty": "medium",
+    "blurb": "Lecture makes sense and then the exams are three long multi-part problems; grinding old exams is worth more than rereading the textbook."
+  },
+  {
+    "code": "CSE330",
+    "difficulty": "hard",
+    "blurb": "The C projects are the hardest coding you'll do here — the thread scheduler and file system assignments regularly take twenty-plus hours each."
+  },
+  {
+    "code": "CSE340",
+    "difficulty": "hard",
+    "blurb": "Four cumulative compiler projects where each one builds on the last, so falling behind on the parser sinks everything after it."
+  },
+  {
+    "code": "CSE365",
+    "difficulty": "medium",
+    "blurb": "Genuinely fun capture-the-flag style labs; the exams are broad and memorization-heavy, which surprises people expecting all hands-on."
+  },
+  {
+    "code": "ECN211",
+    "difficulty": "easy",
+    "blurb": "Large lecture, graph-based multiple-choice exams, and almost no work between them — the standard GPA cushion semester."
+  },
+  {
+    "code": "CSE450",
+    "difficulty": "hard",
+    "blurb": "Pure proof and analysis with almost no coding; the NP-completeness reductions on the final are where most of the grade spread happens."
+  },
+  {
+    "code": "CSE460",
+    "difficulty": "medium",
+    "blurb": "Design docs, UML, and code reviews rather than raw implementation — steady workload, and the rubric rewards being thorough over being clever."
+  },
+  {
+    "code": "CSE475",
+    "difficulty": "hard",
+    "blurb": "Assumes you're comfortable with linear algebra from day one; the math on the homework is harder than the actual model code."
+  },
+  {
+    "code": "STP420",
+    "difficulty": "medium",
+    "blurb": "Concepts are approachable but the R labs are picky, and the take-home data analyses take longer than the two hours the syllabus claims."
+  },
+  {
+    "code": "CSE485",
+    "difficulty": "medium",
+    "blurb": "Front half of the capstone is mostly planning and sponsor meetings — low code volume, but the weekly deliverables are strictly graded."
+  },
+  {
+    "code": "CSE471",
+    "difficulty": "hard",
+    "blurb": "Search, planning, and probability all in one semester; the homework is math-forward and the programming projects have hidden test cases."
+  },
+  {
+    "code": "CSE470",
+    "difficulty": "medium",
+    "blurb": "Very visual and rewarding, but the OpenGL setup and matrix math trip people up in the first three weeks before it clicks."
+  },
+  {
+    "code": "PHI101",
+    "difficulty": "easy",
+    "blurb": "Reading-heavy and discussion-based with short papers instead of exams; easy A if you actually do the reading."
+  },
+  {
+    "code": "CSE486",
+    "difficulty": "medium",
+    "blurb": "All build and demo — the workload is spiky, with two or three brutal weeks right before the sponsor presentation and calm ones between."
+  },
+  {
+    "code": "CSE412",
+    "difficulty": "medium",
+    "blurb": "SQL comes fast, normalization theory is the part people actually fail; the term project database is a good portfolio piece."
+  },
+  {
+    "code": "CSE434",
+    "difficulty": "medium",
+    "blurb": "Lots of protocol layers to memorize plus socket programming projects; the exams reward flashcards more than intuition."
+  }
+]

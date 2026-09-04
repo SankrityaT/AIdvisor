@@ -49,7 +49,7 @@ export default function HeroChatCard() {
   const p = pairs[idx];
 
   return (
-    <div className="chat-card" role="img" aria-label="Example Sol conversation">
+    <div className="chat-card" role="img" aria-label="Example AIVISOR conversation">
       <div className="chat-head">
         <span className="cmark">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
@@ -60,7 +60,7 @@ export default function HeroChatCard() {
           </svg>
         </span>
         <span>
-          <b>Sol</b>
+          <b>AIVISOR</b>
           <small>just now · reads all 5 campuses</small>
         </span>
       </div>

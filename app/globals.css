@@ -1,3 +1,54 @@
+@import "tailwindcss";
+
+/* ── Compass / AIVISOR theme — ASU maroon + gold on charcoal ──────────
+   SHARED FILE. Feature agents must NOT edit this. Use the tokens below
+   as Tailwind utilities: bg-ink-800, text-gold, border-maroon, etc.
+   Tailwind v4 — theme lives here, there is no tailwind.config.js.       */
+
+@theme {
+  /* ASU brand */
+  --color-maroon-50:  #fbeff3;
+  --color-maroon-300: #c95678;
+  --color-maroon:     #8c1d40;
+  --color-maroon-700: #6b1531;
+  --color-maroon-900: #400c1d;
+
+  --color-gold-200:   #ffe89a;
+  --color-gold:       #ffc627;
+  --color-gold-600:   #d19c00;
+
+  /* surfaces */
+  --color-ink-950:    #0b0a0d;
+  --color-ink-900:    #131117;
+  --color-ink-850:    #191620;
+  --color-ink-800:    #221d2b;
+  --color-ink-700:    #2f2839;
+  --color-ink-600:    #453c52;
+
+  /* semantic */
+  --color-teal:       #2ec4b6;   /* rerouted path */
+  --color-teal-700:   #1b8a80;
+  --color-alert:      #ff6b4a;   /* amber-coral: legible against maroon */
+  --color-alert-700:  #c94526;
+  --color-mist:       #b9b2c4;   /* muted body text */
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --animate-pulse-slow: pulse-slow 2.4s ease-in-out infinite;
+  --animate-dash:       dash 1.2s linear infinite;
+  --animate-rise:       rise .5s cubic-bezier(.2,.8,.2,1) both;
+}
+
+@keyframes pulse-slow { 0%,100%{opacity:1} 50%{opacity:.45} }
+@keyframes dash       { to { stroke-dashoffset: -24; } }
+@keyframes rise       { from { opacity:0; transform: translateY(10px) } to { opacity:1; transform:none } }
+
+/* ══════════════════════════════════════════════════════════════════
+   LANDING PAGE STYLES  (owns "/" — light ASU theme, hand-written CSS)
+   Kept verbatim from the landing page work on main.
+   ══════════════════════════════════════════════════════════════════ */
+
 /* ============================================================
    SOL — ASU AI Advisor · Landing Page
    Anchor font: Timezone  ·  Body font: Nord
@@ -262,8 +313,8 @@ h1,h2,h3,.display{font-family:var(--font-display);letter-spacing:-.02em;line-hei
 }
 .avatar-face{display:grid;justify-items:center;gap:.4rem;transform:translateY(-4%)}
 .avatar-face svg{filter:drop-shadow(0 10px 14px rgba(140,21,21,.18))}
-.avatar-name{font-family:var(--font-display);font-weight:800;font-size:1.5rem;color:var(--red-800);letter-spacing:-.01em}
-.avatar-tag{font-family:var(--font-mono);font-size:.58rem;letter-spacing:.26em;text-transform:uppercase;color:var(--muted)}
+.avatar-name{font-family:var(--font-display);font-weight:800;font-size:1.15rem;color:var(--red-800);letter-spacing:-.01em;white-space:nowrap;max-width:100%}
+.avatar-tag{font-family:var(--font-mono);font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);white-space:nowrap;max-width:100%}
 .avatar-status{
   position:absolute;bottom:9%;
   display:inline-flex;align-items:center;gap:.45rem;
@@ -700,3 +751,27 @@ h1,h2,h3,.display{font-family:var(--font-display);letter-spacing:-.02em;line-hei
   html{scroll-behavior:auto}
   .reveal{opacity:1;transform:none}
 }
+
+/* ══════════════════════════════════════════════════════════════════
+   ADVISOR APP SHELL  (owns "/advisor" — dark maroon + gold)
+   Scoped to .aivisor-app so it cannot leak into the landing page.
+   ══════════════════════════════════════════════════════════════════ */
+
+.aivisor-app {
+  background:
+    radial-gradient(1100px 620px at 12% -8%, rgba(140,29,64,.42), transparent 62%),
+    radial-gradient(820px 520px at 92% 4%, rgba(255,198,39,.10), transparent 60%),
+    var(--color-ink-950);
+  color: #f4f1f7;
+  font-family: var(--font-sans);
+  min-height: 100vh;
+}
+
+.aivisor-app ::selection { background: var(--color-gold); color: var(--color-ink-950); }
+
+.aivisor-app *,
+.aivisor-app *::before,
+.aivisor-app *::after { scrollbar-width: thin; scrollbar-color: var(--color-ink-600) transparent; }
+.aivisor-app *::-webkit-scrollbar { width: 8px; height: 8px; }
+.aivisor-app *::-webkit-scrollbar-thumb { background: var(--color-ink-600); border-radius: 99px; }
+.aivisor-app *::-webkit-scrollbar-track { background: transparent; }

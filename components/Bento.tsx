@@ -6,10 +6,10 @@ export default function Bento() {
       <div className="wrap">
         <Reveal>
           <div className="sec-head">
-            <span className="mono">What Sol handles</span>
+            <span className="mono">What AIVISOR handles</span>
             <h2>Everything ASU. One conversation.</h2>
             <p>
-              Stop tab-hopping between six department websites. Sol reads the
+              Stop tab-hopping between six department websites. AIVISOR reads the
               fine print so you don&apos;t have to — and tells you straight
               when it doesn&apos;t know.
             </p>
@@ -32,7 +32,7 @@ export default function Bento() {
               <h3>Course &amp; degree planning</h3>
               <p>
                 Check if a class counts, find open sections, spot missing
-                prerequisites — Sol walks your degree check line by line and
+                prerequisites — AIVISOR walks your degree check line by line and
                 flags anything that would delay graduation.
               </p>
               <div className="mini-ui" aria-hidden="true">
@@ -167,7 +167,7 @@ export default function Bento() {
               <h3>Ask the awkward questions</h3>
               <p>
                 Academic probation, withdrawing, failing a class, switching
-                everything. Sol doesn&apos;t blink — and knows exactly what to
+                everything. AIVISOR doesn&apos;t blink — and knows exactly what to
                 do next.
               </p>
             </article>
