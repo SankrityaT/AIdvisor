@@ -27,11 +27,11 @@ export default function HeroChatCard() {
   const [phase, setPhase] = useState<Phase>("q");
 
   useEffect(() => {
-    if (
-      matchMedia("(prefers-reduced-motion: reduce)").matches
-    ) {
-      setPhase("a");
-      return;
+    // Reduced motion: land on the answer immediately, via a timer rather than a
+    // synchronous setState in the effect body (which cascades an extra render).
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const done = setTimeout(() => setPhase("a"), 0);
+      return () => clearTimeout(done);
     }
     const t1 = setTimeout(() => setPhase("typing"), 900);
     const t2 = setTimeout(() => setPhase("a"), 2600);

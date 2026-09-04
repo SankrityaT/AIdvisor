@@ -158,6 +158,11 @@
     display:grid;place-items:center;
     box-shadow:0 6px 14px -4px rgba(140,21,21,.5), inset 0 1px 0 rgba(255,255,255,.25);
   }
+  .logo-mark.is-mascot{
+    background:linear-gradient(145deg,#FFF6F0,#F4DFD8);
+    box-shadow:0 6px 14px -4px rgba(140,21,21,.28), inset 0 1px 0 rgba(255,255,255,.6);
+    overflow:hidden;
+  }
   .logo small{display:block;font-family:var(--font-mono);font-size:.55rem;letter-spacing:.22em;color:var(--muted);font-weight:500;margin-top:-2px}
   .nav-links{display:flex;gap:2rem;list-style:none}
   .nav-links a{font-size:.92rem;font-weight:600;color:var(--ink-soft);transition:color .2s;position:relative}
@@ -317,7 +322,7 @@
     border-radius:50%;
     animation:spin 40s linear infinite reverse;
   }
-  .avatar-face{display:grid;justify-items:center;gap:.4rem;transform:translateY(-4%)}
+  .avatar-face{display:grid;justify-items:center;gap:.4rem;transform:translateY(-27%)}
   .avatar-face svg{filter:drop-shadow(0 10px 14px rgba(140,21,21,.18))}
   .avatar-name{font-family:var(--font-display);font-weight:800;font-size:1.15rem;color:var(--red-800);letter-spacing:-.01em;white-space:nowrap;max-width:100%}
   .avatar-tag{font-family:var(--font-mono);font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);white-space:nowrap;max-width:100%}

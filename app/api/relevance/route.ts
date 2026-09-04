@@ -6,7 +6,8 @@
 // This endpoint is an ENHANCEMENT: on any failure it returns { items: [] }
 // so the tooltip simply does not appear. It must never block the demo.
 
-import { streamPipeline } from "@/lib/agents";
+import { streamPipeline, jsonPipeline } from "@/lib/agents";
+import type { AgentRun } from "@/lib/agents";
 import { chatJSON, MODELS } from "@/lib/asuair";
 import { buildCourseIndex, type CourseIndex } from "@/lib/prereq";
 import type {
@@ -131,7 +132,8 @@ export async function POST(req: Request) {
     });
   }
 
-  return streamPipeline(async (run) => {
+  const noStream = new URL(req.url).searchParams.get("stream") === "off";
+  const pipeline = async (run: AgentRun) => {
     try {
       const items = await run.step(
         "relevance",
@@ -171,5 +173,6 @@ export async function POST(req: Request) {
       // Never fail the frame: the tooltip is an enhancement, not a blocker.
       return { items: [] as CourseRelevance[] };
     }
-  });
+  };
+  return noStream ? jsonPipeline(pipeline) : streamPipeline(pipeline);
 }

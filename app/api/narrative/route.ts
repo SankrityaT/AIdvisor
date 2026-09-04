@@ -8,7 +8,8 @@
 // or vague, a deterministic locally-composed narrative — still naming real
 // courses — is returned instead.
 
-import { streamPipeline } from "@/lib/agents";
+import { streamPipeline, jsonPipeline } from "@/lib/agents";
+import type { AgentRun } from "@/lib/agents";
 import { chat, MODELS } from "@/lib/asuair";
 import { loadData } from "@/lib/data";
 import type { FlowchartOutput, MajorMap, QuizAnswers } from "@/lib/types";
@@ -45,7 +46,8 @@ export async function POST(req: Request) {
     );
   }
 
-  return streamPipeline(async (run) => {
+  const noStream = new URL(req.url).searchParams.get("stream") === "off";
+  const pipeline = async (run: AgentRun) => {
     // Titles make the narrative specific, so fall back to the bundled major
     // map if the caller did not send one.
     let map: MajorMap | undefined = body.majorMap?.semesters?.length ? body.majorMap : undefined;
@@ -152,5 +154,6 @@ Output ONLY the paragraph.`,
       final_courses: labels,
       source,
     };
-  });
+  };
+  return noStream ? jsonPipeline(pipeline) : streamPipeline(pipeline);
 }

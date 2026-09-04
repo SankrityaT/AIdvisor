@@ -9,7 +9,8 @@
 // If the model is slow or degraded, the deterministic note ships instead —
 // it is shorter, but it is never vague.
 
-import { streamPipeline } from "@/lib/agents";
+import { streamPipeline, jsonPipeline } from "@/lib/agents";
+import type { AgentRun } from "@/lib/agents";
 import { chatJSON, MODELS } from "@/lib/asuair";
 import { loadData } from "@/lib/data";
 import { buildCourseIndex, creditLoad, type CourseIndex } from "@/lib/prereq";
@@ -315,7 +316,8 @@ export async function POST(req: Request) {
   const disruption = body.disruption;
   const reroute = body.reroute ?? null;
 
-  return streamPipeline(async (run) => {
+  const noStream = new URL(req.url).searchParams.get("stream") === "off";
+  const pipeline = async (run: AgentRun) => {
     const map = body.majorMap ?? (await loadData()).map;
     const idx = buildCourseIndex(map);
     const plan = flowchart.plan ?? [];
@@ -401,5 +403,6 @@ Return JSON:
     };
 
     return { handoff };
-  });
+  };
+  return noStream ? jsonPipeline(pipeline) : streamPipeline(pipeline);
 }

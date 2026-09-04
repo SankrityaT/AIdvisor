@@ -1,6 +1,7 @@
 // Multi-agent plan generation, streamed as SSE so the Agent Activity panel
 // renders real telemetry while the pipeline runs.
-import { streamPipeline } from "@/lib/agents";
+import { streamPipeline, jsonPipeline } from "@/lib/agents";
+import type { AgentRun } from "@/lib/agents";
 import { generatePlan } from "@/lib/pipeline";
 import { loadData } from "@/lib/data";
 import type { QuizAnswers } from "@/lib/types";
@@ -16,9 +17,11 @@ export async function POST(req: Request) {
       status: 400, headers: { "Content-Type": "application/json" },
     });
   }
-  return streamPipeline(async (run) => {
+  const noStream = new URL(req.url).searchParams.get("stream") === "off";
+  const pipeline = async (run: AgentRun) => {
     const { map, sentiment } = await loadData();
     const flowchart = await generatePlan(run, quiz, map, sentiment, (f) => ({ flowchart: f, map, sentiment }));
     return { flowchart, map, sentiment };
-  });
+  };
+  return noStream ? jsonPipeline(pipeline) : streamPipeline(pipeline);
 }

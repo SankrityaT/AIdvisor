@@ -2,6 +2,7 @@
 
 import { useRef, type MouseEvent } from "react";
 import HeroChatCard from "./HeroChatCard";
+import AIDvisor from "@/app/components/mascot";
 
 export default function AvatarStage() {
   const stageRef = useRef<HTMLDivElement>(null);
@@ -36,37 +37,8 @@ export default function AvatarStage() {
         <div className="avatar-core">
           <div className="avatar-dashed" aria-hidden="true" />
           <div className="avatar-face">
-            <svg width="120" height="120" viewBox="0 0 120 120" fill="none" aria-hidden="true">
-              <rect x="24" y="34" width="72" height="58" rx="20" fill="#8C1515" />
-              <rect x="24" y="34" width="72" height="58" rx="20" fill="url(#faceShade)" />
-              <circle cx="45" cy="60" r="6.5" fill="#FFF6F0" />
-              <circle cx="75" cy="60" r="6.5" fill="#FFF6F0" />
-              <path
-                d="M47 75c5.5 5.5 20.5 5.5 26 0"
-                stroke="#FFF6F0"
-                strokeWidth="4.5"
-                strokeLinecap="round"
-              />
-              <line x1="60" y1="34" x2="60" y2="22" stroke="#8C1515" strokeWidth="4" strokeLinecap="round" />
-              <circle cx="60" cy="17" r="6" fill="#D9A13B" />
-              <circle cx="60" cy="17" r="10" fill="#D9A13B" opacity=".25" />
-              <defs>
-                <linearGradient
-                  id="faceShade"
-                  x1="24"
-                  y1="34"
-                  x2="96"
-                  y2="92"
-                  gradientUnits="userSpaceOnUse"
-                >
-                  <stop stopColor="#fff" stopOpacity=".14" />
-                  <stop offset=".5" stopColor="#fff" stopOpacity="0" />
-                  <stop offset="1" stopColor="#000" stopOpacity=".14" />
-                </linearGradient>
-              </defs>
-            </svg>
+            <AIDvisor state="idle" size={150} />
             <span className="avatar-name">AIDvisor</span>
-            <span className="avatar-tag">avatar · placeholder</span>
           </div>
           <span className="avatar-status">
             <i /> Online — answers in seconds

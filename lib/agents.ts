@@ -118,6 +118,32 @@ export function streamPipeline<T>(handler: (run: AgentRun) => Promise<T>): Respo
   });
 }
 
+/**
+ * Run a pipeline WITHOUT streaming and return one plain JSON response.
+ * SSE gets buffered or cut short by some proxies and serverless platforms; this
+ * is the fallback the client retries with so a demo can never end up with no
+ * plan at all.
+ */
+export async function jsonPipeline<T>(handler: (run: AgentRun) => Promise<T>): Promise<Response> {
+  const run = new AgentRun();
+  let delivered: unknown;
+  let hasDelivered = false;
+  run.deliver = (result: unknown) => {
+    if (hasDelivered) return;
+    hasDelivered = true;
+    delivered = result;
+  };
+  try {
+    const result = await handler(run);
+    return Response.json({ result: hasDelivered ? delivered : result, events: run.events });
+  } catch (err) {
+    return Response.json(
+      { error: err instanceof Error ? err.message : String(err), events: run.events },
+      { status: 500 },
+    );
+  }
+}
+
 /** Client-side helper: consume an SSE pipeline endpoint. */
 export async function consumePipeline(
   url: string,
@@ -154,5 +180,26 @@ export async function consumePipeline(
     }
   }
   if (error) throw new Error(error);
+
+  // The stream closed without ever delivering a result — buffered, truncated or
+  // cut off by the platform. Retry once, non-streaming, before giving up.
+  if (result === undefined) {
+    const retryUrl = `${url}${url.includes("?") ? "&" : "?"}stream=off`;
+    const fallback = await fetch(retryUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+    const data = (await fallback.json().catch(() => null)) as
+      | { result?: unknown; events?: AgentEvent[]; error?: string }
+      | null;
+    if (!data) throw new Error("The server returned no usable response.");
+    for (const e of data.events ?? []) {
+      try { onAgent(e); } catch { /* listener errors must not mask the result */ }
+    }
+    if (data.error) throw new Error(data.error);
+    return data.result;
+  }
+
   return result;
 }
