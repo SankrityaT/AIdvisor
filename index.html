@@ -1,0 +1,727 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Compass — Your AI Advisor at ASU</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Timezone:wght@300;400;500;600;700;800;900&family=Nord:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    /* ASU palette — lightened */
+    --maroon:        #8C1515;
+    --maroon-deep:   #6B0F0F;
+    --maroon-soft:   #B23A3A;
+    --maroon-100:    #F3E1DF;
+    --maroon-050:    #FAF0EE;
+    --teal:          #0E8C86;
+    --teal-deep:     #0A6B66;
+    --teal-soft:     #5FB5B0;
+    --teal-100:      #DBF1EF;
+    --sand:          #E7DFD2;
+    --sand-deep:     #D8CBB6;
+    --cream:         #FBF8F3;
+    --paper:         #FFFFFF;
+    --sun:           #C8892B;
+    --sun-soft:      #E7B85C;
+    --ink:           #241C1A;
+    --ink-soft:      #5B4F4B;
+    --ink-mute:      #8A7E79;
+    --line:          rgba(140,21,21,0.10);
+
+    --shadow-sm: 0 1px 2px rgba(36,28,26,.06), 0 2px 6px rgba(36,28,26,.05);
+    --shadow-md: 0 6px 16px rgba(36,28,26,.08), 0 14px 34px rgba(140,21,21,.06);
+    --shadow-lg: 0 18px 40px rgba(36,28,26,.12), 0 40px 80px rgba(140,21,21,.10);
+    --shadow-glow: 0 0 60px rgba(140,21,21,.25);
+
+    --font-display: "Timezone", system-ui, sans-serif;
+    --font-body: "Nord", system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--font-body);
+    color:var(--ink);
+    background:
+      radial-gradient(1200px 700px at 82% -8%, rgba(140,21,21,.07), transparent 60%),
+      radial-gradient(1000px 600px at 8% 4%, rgba(14,140,134,.06), transparent 55%),
+      linear-gradient(180deg, var(--cream) 0%, #FBF7F1 40%, var(--cream) 100%);
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    position:relative;
+  }
+  /* faint dot grid for a tangible, engineered surface */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:radial-gradient(rgba(140,21,21,.055) 1px, transparent 1px);
+    background-size:26px 26px;
+    mask-image:radial-gradient(120% 90% at 50% 0%, #000 30%, transparent 85%);
+  }
+  .wrap{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 24px}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;top:14px;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    gap:16px;padding:12px 18px;border-radius:18px;
+    background:rgba(255,255,255,.72);
+    backdrop-filter:blur(16px) saturate(140%);
+    -webkit-backdrop-filter:blur(16px) saturate(140%);
+    border:1px solid rgba(255,255,255,.7);
+    box-shadow:var(--shadow-md);
+  }
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+  .brand-mark{
+    width:38px;height:38px;border-radius:12px;display:grid;place-items:center;
+    background:linear-gradient(150deg, var(--maroon) 0%, var(--maroon-deep) 100%);
+    box-shadow:0 6px 14px rgba(107,15,15,.35), inset 0 1px 0 rgba(255,255,255,.25);
+    color:#fff;position:relative;overflow:hidden;
+  }
+  .brand-mark::after{
+    content:"";position:absolute;inset:0;border-radius:12px;
+    background:radial-gradient(60% 60% at 30% 25%, rgba(255,255,255,.45), transparent 60%);
+  }
+  .brand-mark svg{width:20px;height:20px;position:relative;z-index:1}
+  .brand-name{font-family:var(--font-display);font-weight:800;font-size:20px;letter-spacing:-.01em;color:var(--ink)}
+  .brand-name b{color:var(--maroon)}
+  .brand-tag{
+    font-family:var(--font-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-mute);border:1px solid var(--line);border-radius:999px;padding:3px 9px;margin-left:2px;
+  }
+  nav.links{display:flex;gap:6px;align-items:center}
+  nav.links a{
+    text-decoration:none;color:var(--ink-soft);font-weight:600;font-size:14.5px;
+    padding:9px 14px;border-radius:11px;transition:.2s;
+  }
+  nav.links a:hover{background:var(--maroon-050);color:var(--maroon)}
+  .nav-cta{
+    display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;font-size:14px;
+    color:#fff;padding:10px 18px;border-radius:12px;
+    background:linear-gradient(150deg, var(--maroon) 0%, var(--maroon-deep) 100%);
+    box-shadow:0 8px 18px rgba(140,21,21,.30), inset 0 1px 0 rgba(255,255,255,.28);
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .nav-cta:hover{transform:translateY(-2px);box-shadow:0 14px 26px rgba(140,21,21,.38), inset 0 1px 0 rgba(255,255,255,.28)}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:52px 0 20px;text-align:center;position:relative}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;margin:0 auto 22px;
+    font-family:var(--font-mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--maroon);background:rgba(255,255,255,.85);
+    padding:8px 16px;border-radius:999px;border:1px solid var(--line);
+    box-shadow:var(--shadow-sm);
+  }
+  .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 4px var(--teal-100);animation:blink 2.4s ease-in-out infinite}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+  h1.headline{
+    font-family:var(--font-display);font-weight:800;
+    font-size:clamp(40px,6.4vw,78px);line-height:1.02;letter-spacing:-.03em;
+    color:var(--ink);max-width:15ch;margin:0 auto;
+  }
+  h1.headline .accent{
+    background:linear-gradient(180deg, var(--maroon) 0%, var(--maroon-deep) 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .subhead{
+    max-width:60ch;margin:22px auto 0;font-size:clamp(16px,1.5vw,19px);line-height:1.6;
+    color:var(--ink-soft);font-weight:500;
+  }
+  .subhead b{color:var(--ink);font-weight:700}
+  .hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:30px 0 8px}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;font-size:15.5px;
+    padding:15px 26px;border-radius:14px;transition:transform .18s ease, box-shadow .18s ease;cursor:pointer;border:0;
+  }
+  .btn-primary{
+    color:#fff;background:linear-gradient(155deg, var(--maroon) 0%, var(--maroon-deep) 100%);
+    box-shadow:0 12px 28px rgba(140,21,21,.34), inset 0 1px 0 rgba(255,255,255,.3);
+  }
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 20px 40px rgba(140,21,21,.42), inset 0 1px 0 rgba(255,255,255,.3)}
+  .btn-ghost{
+    color:var(--maroon);background:rgba(255,255,255,.85);
+    border:1px solid var(--line);box-shadow:var(--shadow-sm);
+  }
+  .btn-ghost:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--maroon-100)}
+  .btn .ic{width:18px;height:18px}
+
+  /* ---------- THE AVATAR (star of the show) ---------- */
+  .stage{
+    position:relative;margin:26px auto 8px;width:min(560px,92vw);aspect-ratio:1/1;
+    perspective:1200px;
+  }
+  .stage .floor{
+    position:absolute;left:50%;bottom:-2%;transform:translateX(-50%);
+    width:64%;height:40px;border-radius:50%;
+    background:radial-gradient(50% 50% at 50% 50%, rgba(107,15,15,.30), rgba(107,15,15,.10) 55%, transparent 75%);
+    filter:blur(6px);
+  }
+  .stage .halo{
+    position:absolute;inset:6%;border-radius:50%;
+    background:
+      radial-gradient(50% 50% at 50% 42%, rgba(255,255,255,.9), rgba(255,255,255,0) 68%),
+      radial-gradient(60% 60% at 50% 55%, rgba(140,21,21,.16), transparent 70%);
+    filter:blur(4px);
+  }
+  .avatar{
+    position:absolute;inset:0;display:grid;place-items:center;
+    transform-style:preserve-3d;transition:transform .2s ease-out;will-change:transform;
+  }
+  /* rotating rings */
+  .ring{
+    position:absolute;border-radius:50%;
+    border:1.5px solid transparent;
+  }
+  .ring.r1{inset:2%;border-color:rgba(140,21,21,.28);box-shadow:0 0 0 1px rgba(140,21,21,.05) inset;animation:spin 26s linear infinite}
+  .ring.r1::before,.ring.r1::after{content:"";position:absolute;width:10px;height:10px;border-radius:50%;background:var(--maroon);box-shadow:0 0 12px rgba(140,21,21,.7)}
+  .ring.r1::before{top:-5px;left:50%;transform:translateX(-50%)}
+  .ring.r1::after{bottom:-5px;left:50%;transform:translateX(-50%);background:var(--teal);box-shadow:0 0 12px rgba(14,140,134,.7)}
+  .ring.r2{inset:11%;border-style:dashed;border-color:rgba(14,140,134,.45);animation:spin 18s linear infinite reverse}
+  .ring.r3{inset:20%;border-color:rgba(200,137,43,.4);border-width:1px;animation:spin 40s linear infinite}
+  .ring.r4{inset:20%;border-color:transparent;background:conic-gradient(from 0deg, rgba(140,21,21,.35), transparent 22%, transparent 60%, rgba(14,140,134,.30) 78%, transparent);-webkit-mask:radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 1px));mask:radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 1px));animation:spin 12s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  /* core orb */
+  .core{
+    position:absolute;inset:29%;border-radius:50%;
+    background:
+      radial-gradient(58% 58% at 34% 28%, rgba(255,255,255,.95), rgba(255,255,255,0) 46%),
+      radial-gradient(120% 120% at 50% 120%, var(--teal) 0%, rgba(14,140,134,0) 42%),
+      radial-gradient(120% 120% at 50% -10%, var(--maroon) 0%, rgba(140,21,21,0) 55%),
+      radial-gradient(circle at 50% 50%, #fff 0%, #FBF3EC 45%, #F4E4DD 100%);
+    box-shadow:
+      var(--shadow-glow),
+      inset 0 -18px 40px rgba(140,21,21,.22),
+      inset 0 18px 40px rgba(255,255,255,.9),
+      0 30px 60px rgba(107,15,15,.20);
+    display:grid;place-items:center;overflow:hidden;
+    animation:breathe 5.5s ease-in-out infinite;
+  }
+  @keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.035)}}
+  .core .pulse{position:absolute;inset:0;border-radius:50%;border:2px solid rgba(140,21,21,.35);animation:pulse 3.2s ease-out infinite}
+  .core .pulse.p2{animation-delay:1.6s;border-color:rgba(14,140,134,.35)}
+  @keyframes pulse{0%{transform:scale(.7);opacity:.7}100%{transform:scale(1.25);opacity:0}}
+  .core .scan{position:absolute;inset:0;background:conic-gradient(from 0deg, transparent 0 82%, rgba(14,140,134,.5) 92%, transparent 100%);animation:spin 4s linear infinite;mix-blend-mode:multiply;opacity:.5}
+  .core .glyph{
+    position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:6px;
+    transform:translateZ(40px);
+  }
+  .core .glyph svg{width:44%;height:44%;color:var(--maroon);filter:drop-shadow(0 6px 10px rgba(107,15,15,.30))}
+  .core .glyph .name{
+    font-family:var(--font-display);font-weight:800;letter-spacing:.24em;font-size:clamp(11px,2.1vw,15px);
+    color:var(--maroon-deep);text-shadow:0 1px 0 rgba(255,255,255,.6);
+  }
+  .core .glyph .state{font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;color:var(--teal-deep);text-transform:uppercase;display:flex;align-items:center;gap:6px}
+  .core .glyph .state i{width:6px;height:6px;border-radius:50%;background:var(--teal);box-shadow:0 0 8px var(--teal);animation:blink 2s infinite}
+
+  .ph-badge{
+    position:absolute;top:-6px;right:2%;z-index:5;
+    font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--maroon);background:rgba(255,255,255,.92);border:1px dashed var(--maroon-soft);
+    padding:6px 11px;border-radius:999px;box-shadow:var(--shadow-sm);
+  }
+
+  /* floating context chips — sell depth + tangibility */
+  .chip{
+    position:absolute;z-index:6;display:flex;align-items:center;gap:10px;
+    background:rgba(255,255,255,.9);backdrop-filter:blur(8px);
+    border:1px solid rgba(255,255,255,.9);border-radius:14px;padding:11px 14px;
+    box-shadow:var(--shadow-md);text-align:left;white-space:nowrap;
+    animation:float 6s ease-in-out infinite;
+  }
+  .chip .ico{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;flex:0 0 auto}
+  .chip .k{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute)}
+  .chip .v{font-weight:700;font-size:14px;color:var(--ink);font-family:var(--font-display);letter-spacing:-.01em}
+  .chip .v small{color:var(--teal-deep);font-family:var(--font-body);font-weight:600;font-size:12px}
+  .chip.c1{top:6%;left:-10%;animation-delay:0s}
+  .chip.c1 .ico{background:var(--teal-100);color:var(--teal-deep)}
+  .chip.c2{top:24%;right:-13%;animation-delay:1.1s}
+  .chip.c2 .ico{background:var(--maroon-100);color:var(--maroon)}
+  .chip.c3{bottom:16%;left:-13%;animation-delay:.6s}
+  .chip.c3 .ico{background:#F6EAD3;color:var(--sun)}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+  /* Ask Compass pill */
+  .ask{
+    position:relative;z-index:7;margin:-8px auto 0;width:min(520px,90vw);
+    display:flex;align-items:center;gap:12px;padding:10px 10px 10px 18px;
+    background:rgba(255,255,255,.9);backdrop-filter:blur(10px);
+    border:1px solid var(--line);border-radius:999px;box-shadow:var(--shadow-md);
+  }
+  .ask .lead{display:flex;align-items:center;gap:9px;color:var(--ink-mute);font-weight:600;font-size:14.5px}
+  .ask .mic{width:9px;height:9px;border-radius:50%;background:var(--maroon);box-shadow:0 0 0 3px var(--maroon-100)}
+  .ask .field{flex:1;min-width:0}
+  .ask .field .typed{font-family:var(--font-body);color:var(--ink-soft);font-size:14.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .ask .field .typed .cur{display:inline-block;width:2px;height:1em;background:var(--maroon);margin-left:2px;vertical-align:-2px;animation:blink 1s step-end infinite}
+  .ask .send{
+    flex:0 0 auto;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:#fff;
+    background:linear-gradient(150deg,var(--maroon),var(--maroon-deep));
+    box-shadow:0 8px 16px rgba(140,21,21,.32), inset 0 1px 0 rgba(255,255,255,.3);transition:transform .18s;
+  }
+  .ask .send:hover{transform:scale(1.06) rotate(-8deg)}
+  .ask .send svg{width:18px;height:18px}
+  .ask-hint{margin-top:12px;font-family:var(--font-mono);font-size:11.5px;letter-spacing:.06em;color:var(--ink-mute)}
+  .ask-hint b{color:var(--maroon);font-weight:600}
+
+  /* ---------- TRUST STRIP ---------- */
+  .strip{
+    margin:48px 0 8px;display:flex;flex-wrap:wrap;gap:14px 40px;justify-content:center;
+    padding:22px;border-radius:20px;
+    background:linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,.55));
+    border:1px solid rgba(255,255,255,.7);box-shadow:var(--shadow-sm);
+  }
+  .stat{display:flex;align-items:baseline;gap:9px}
+  .stat .n{font-family:var(--font-display);font-weight:800;font-size:26px;color:var(--maroon);letter-spacing:-.02em}
+  .stat .l{font-size:13.5px;color:var(--ink-soft);font-weight:600}
+
+  /* ---------- SECTION HEADINGS ---------- */
+  section{padding:70px 0;position:relative}
+  .sec-head{max-width:64ch;margin:0 auto 44px;text-align:center}
+  .kicker{
+    font-family:var(--font-mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--teal-deep);font-weight:600;
+  }
+  .sec-head h2{
+    font-family:var(--font-display);font-weight:800;letter-spacing:-.025em;line-height:1.06;
+    font-size:clamp(30px,4.2vw,46px);color:var(--ink);margin-top:12px;
+  }
+  .sec-head p{margin-top:16px;color:var(--ink-soft);font-size:17px;line-height:1.6;font-weight:500}
+
+  /* ---------- HOW IT WORKS ---------- */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;position:relative}
+  .steps::before{
+    content:"";position:absolute;top:44px;left:12%;right:12%;height:2px;
+    background:linear-gradient(90deg, transparent, var(--line) 12%, var(--line) 88%, transparent);z-index:0;
+  }
+  .step{
+    position:relative;z-index:1;background:var(--paper);border:1px solid rgba(255,255,255,.9);
+    border-radius:20px;padding:26px 22px;box-shadow:var(--shadow-md);transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .step:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+  .step .num{
+    width:48px;height:48px;border-radius:14px;display:grid;place-items:center;margin-bottom:18px;
+    font-family:var(--font-display);font-weight:800;font-size:18px;color:#fff;
+    background:linear-gradient(150deg,var(--maroon),var(--maroon-deep));
+    box-shadow:0 8px 16px rgba(140,21,21,.28), inset 0 1px 0 rgba(255,255,255,.3);
+  }
+  .step:nth-child(3) .num{background:linear-gradient(150deg,var(--teal),var(--teal-deep));box-shadow:0 8px 16px rgba(14,140,134,.3), inset 0 1px 0 rgba(255,255,255,.3)}
+  .step h3{font-family:var(--font-display);font-weight:700;font-size:19px;letter-spacing:-.01em;margin-bottom:9px}
+  .step p{font-size:14.5px;line-height:1.6;color:var(--ink-soft)}
+
+  /* ---------- FEATURES ---------- */
+  .features{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
+  .card{
+    grid-column:span 2;background:var(--paper);border:1px solid rgba(255,255,255,.9);
+    border-radius:22px;padding:28px;box-shadow:var(--shadow-md);position:relative;overflow:hidden;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+  .card.wide{grid-column:span 3}
+  .card::after{content:"";position:absolute;top:-40%;right:-30%;width:70%;height:70%;border-radius:50%;background:radial-gradient(circle, rgba(140,21,21,.07), transparent 70%);pointer-events:none}
+  .card .fi{
+    width:52px;height:52px;border-radius:15px;display:grid;place-items:center;margin-bottom:18px;
+    background:var(--maroon-050);color:var(--maroon);border:1px solid var(--maroon-100);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.9);
+  }
+  .card.teal .fi{background:var(--teal-100);color:var(--teal-deep);border-color:var(--teal-100)}
+  .card .fi svg{width:26px;height:26px}
+  .card h3{font-family:var(--font-display);font-weight:700;font-size:20px;letter-spacing:-.01em;margin-bottom:10px}
+  .card p{font-size:14.5px;line-height:1.62;color:var(--ink-soft)}
+  .card .tag{display:inline-block;margin-top:16px;font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--maroon);background:var(--maroon-050);padding:5px 10px;border-radius:8px}
+  .card.teal .tag{color:var(--teal-deep);background:var(--teal-100)}
+
+  /* ---------- ROUTE MAP TEASER ---------- */
+  .map-panel{
+    background:linear-gradient(180deg,#fff,#FBF7F1);border:1px solid rgba(255,255,255,.9);
+    border-radius:26px;padding:34px;box-shadow:var(--shadow-lg);position:relative;overflow:hidden;
+  }
+  .map-panel .head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:26px}
+  .map-panel .head .t{font-family:var(--font-display);font-weight:800;font-size:20px;letter-spacing:-.01em}
+  .map-panel .head .t span{color:var(--maroon)}
+  .map-legend{display:flex;gap:16px;font-size:12.5px;color:var(--ink-soft);font-weight:600}
+  .map-legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:middle}
+  .rail{position:relative;display:flex;gap:10px;overflow-x:auto;padding:8px 2px 14px;scrollbar-width:thin}
+  .rail::before{content:"";position:absolute;top:20px;left:0;right:0;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--maroon) 0 40%, var(--teal) 40% 70%, var(--sand-deep) 70% 100%)}
+  .station{
+    flex:0 0 176px;position:relative;padding-top:34px;
+  }
+  .station .node{
+    position:absolute;top:11px;left:16px;width:22px;height:22px;border-radius:50%;
+    background:#fff;border:3px solid var(--maroon);box-shadow:0 4px 10px rgba(140,21,21,.25);z-index:2;
+  }
+  .station.now .node{border-color:var(--teal);box-shadow:0 0 0 6px var(--teal-100),0 4px 12px rgba(14,140,134,.35)}
+  .station .card-in{
+    background:#fff;border:1px solid var(--line);border-radius:16px;padding:15px;box-shadow:var(--shadow-sm);
+  }
+  .station .card-in .sem{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute)}
+  .station .card-in h4{font-family:var(--font-display);font-weight:700;font-size:15px;margin:4px 0 10px}
+  .course{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:12.5px;padding:6px 0;border-top:1px dashed var(--line)}
+  .course:first-of-type{border-top:0}
+  .course code{font-family:var(--font-mono);font-weight:600;color:var(--ink)}
+  .course .badge{font-family:var(--font-mono);font-size:10px;padding:2px 7px;border-radius:6px}
+  .badge.ok{background:var(--teal-100);color:var(--teal-deep)}
+  .badge.full{background:var(--maroon-100);color:var(--maroon)}
+  .badge.swap{background:#F6EAD3;color:var(--sun)}
+  .station.now .card-in{border-color:var(--teal-soft);box-shadow:0 10px 24px rgba(14,140,134,.14)}
+  .reroute-note{
+    display:flex;align-items:center;gap:12px;margin-top:18px;padding:14px 16px;border-radius:14px;
+    background:var(--teal-100);border:1px solid rgba(14,140,134,.2);color:var(--teal-deep);font-size:14px;font-weight:600;
+  }
+  .reroute-note svg{width:20px;height:20px;flex:0 0 auto}
+
+  /* ---------- CTA ---------- */
+  .cta-panel{
+    position:relative;border-radius:30px;overflow:hidden;text-align:center;
+    padding:64px 28px;color:#fff;
+    background:
+      radial-gradient(80% 120% at 15% 0%, rgba(255,255,255,.14), transparent 40%),
+      radial-gradient(90% 120% at 90% 100%, rgba(14,140,134,.35), transparent 55%),
+      linear-gradient(155deg, var(--maroon) 0%, var(--maroon-deep) 100%);
+    box-shadow:var(--shadow-lg);
+  }
+  .cta-panel::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.09) 1px,transparent 1px);background-size:24px 24px;opacity:.5}
+  .cta-panel h2{position:relative;font-family:var(--font-display);font-weight:800;font-size:clamp(30px,4.4vw,48px);letter-spacing:-.025em;line-height:1.05}
+  .cta-panel p{position:relative;max-width:52ch;margin:16px auto 0;font-size:17px;line-height:1.6;color:rgba(255,255,255,.85);font-weight:500}
+  .cta-panel .hero-actions{margin-top:30px}
+  .cta-panel .btn-primary{background:linear-gradient(155deg,#fff,#f4ece3);color:var(--maroon-deep);box-shadow:0 14px 30px rgba(0,0,0,.22)}
+  .cta-panel .btn-ghost{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.3);backdrop-filter:blur(6px)}
+  .cta-panel .btn-ghost:hover{background:rgba(255,255,255,.2)}
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:44px 0 60px;margin-top:20px}
+  .foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px;padding-top:26px;border-top:1px solid var(--line)}
+  .foot .brand-name{font-size:18px}
+  .foot small{color:var(--ink-mute);font-size:13px;font-weight:500}
+  .foot .flinks{display:flex;gap:20px}
+  .foot .flinks a{color:var(--ink-soft);text-decoration:none;font-weight:600;font-size:14px}
+  .foot .flinks a:hover{color:var(--maroon)}
+
+  /* reveal on scroll */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease, transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:900px){
+    nav.links{display:none}
+    .steps{grid-template-columns:repeat(2,1fr)}
+    .steps::before{display:none}
+    .features{grid-template-columns:repeat(2,1fr)}
+    .card,.card.wide{grid-column:span 1}
+    .chip.c1{left:-2%}.chip.c2{right:-2%}.chip.c3{left:-2%}
+  }
+  @media (max-width:560px){
+    .steps,.features{grid-template-columns:1fr}
+    .chip{transform:scale(.86)}
+    .strip{gap:14px 24px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none !important;transition:none !important}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <!-- NAV -->
+    <header class="nav">
+      <a class="brand" href="#">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5 13 13l-4.5 2.5L11 11z"/></svg>
+        </span>
+        <span class="brand-name">Compass<b>.</b></span>
+        <span class="brand-tag">ASU · AI Advisor</span>
+      </a>
+      <nav class="links">
+        <a href="#how">How it works</a>
+        <a href="#features">Features</a>
+        <a href="#route">Your route</a>
+        <a href="#voice">Voice</a>
+      </nav>
+      <a class="nav-cta" href="#start">
+        Start your route
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="start">
+      <span class="eyebrow"><span class="dot"></span> Your AI advisor, on call 24/7</span>
+      <h1 class="headline">Every student's route to <span class="accent">graduation</span>, planned by an AI.</h1>
+      <p class="subhead">Compass is the one place to go for <b>anything related to ASU</b> — it builds your personalized path to the degree, then <b>reroutes you live</b> the moment reality gets in the way.</p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#start">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18"/></svg>
+          Build my route
+        </a>
+        <a class="btn btn-ghost" href="#how">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 8.5 16 12l-6 3.5z" fill="currentColor" stroke="none"/></svg>
+          See how it works
+        </a>
+      </div>
+
+      <!-- THE AVATAR -->
+      <div class="stage" id="stage">
+        <div class="halo"></div>
+        <div class="floor"></div>
+        <span class="ph-badge">Avatar · placeholder</span>
+        <div class="avatar" id="avatar">
+          <div class="ring r1"></div>
+          <div class="ring r2"></div>
+          <div class="ring r3"></div>
+          <div class="ring r4"></div>
+          <div class="core">
+            <div class="pulse"></div>
+            <div class="pulse p2"></div>
+            <div class="scan"></div>
+            <div class="glyph">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5 13 13l-4.5 2.5L11 11z"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/></svg>
+              <span class="name">COMPASS</span>
+              <span class="state"><i></i> online · listening</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="chip c1">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+          <span><span class="k">Route status</span><br><span class="v">On track <small>· Dec 2027</small></span></span>
+        </div>
+        <div class="chip c2">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 19h16M8 15v-3M12 15V9M16 15v-5"/></svg></span>
+          <span><span class="k">Semester 3</span><br><span class="v">2 courses flagged</span></span>
+        </div>
+        <div class="chip c3">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg></span>
+          <span><span class="k">Reroute found</span><br><span class="v">Prereqs preserved</span></span>
+        </div>
+      </div>
+
+      <!-- ASK COMPASS -->
+      <div class="ask">
+        <span class="lead"><span class="mic"></span> Ask Compass</span>
+        <div class="field"><div class="typed"><span id="typed">Will CSE355 still fit my schedule?</span><span class="cur"></span></div></div>
+        <span class="send" aria-label="Send">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </div>
+      <p class="ask-hint">Ask about <b>classes</b> · <b>majors</b> · <b>GPA</b> · <b>registration</b> · or just say <b>“where do I start?”</b></p>
+    </section>
+
+    <!-- TRUST STRIP -->
+    <div class="strip reveal">
+      <div class="stat"><span class="n">8</span><span class="l">semesters planned ahead</span></div>
+      <div class="stat"><span class="n">~90s</span><span class="l">from quiz to full route</span></div>
+      <div class="stat"><span class="n">Live</span><span class="l">reroute when a class breaks</span></div>
+      <div class="stat"><span class="n">24/7</span><span class="l">advice, by voice or text</span></div>
+    </div>
+
+    <!-- HOW IT WORKS -->
+    <section id="how">
+      <div class="sec-head reveal">
+        <span class="kicker">How it works</span>
+        <h2>From “I have no idea” to a full plan, in four steps.</h2>
+        <p>Answer a few questions. Compass maps your major, weighs your goals, and hands you a semester-by-semester route — then stays with you when things change.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="num">1</div>
+          <h3>Tell Compass about you</h3>
+          <p>Intended major, career goal, how much risk you want, and whether you'd rather learn deeply or protect your GPA.</p>
+        </div>
+        <div class="step reveal">
+          <div class="num">2</div>
+          <h3>It builds your route</h3>
+          <p>Compass cross-references the major map and course sentiment to generate a clean path to graduation.</p>
+        </div>
+        <div class="step reveal">
+          <div class="num">3</div>
+          <h3>Reality hits — it reroutes</h3>
+          <p>A class fills up or isn't offered? Compass finds a valid swap that keeps prereqs and your grad date intact.</p>
+        </div>
+        <div class="step reveal">
+          <div class="num">4</div>
+          <h3>Ask it anything, by voice</h3>
+          <p>Stuck at 2am before registration? Ask out loud and hear the answer back. No inbox. No three-week wait.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features" style="padding-top:20px">
+      <div class="sec-head reveal">
+        <span class="kicker">What Compass does</span>
+        <h2>One advisor for everything ASU.</h2>
+        <p>Not a portal with 400 login links. A single, welcoming place that actually knows your situation.</p>
+      </div>
+      <div class="features">
+        <div class="card wide reveal">
+          <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19c4-1 6-4 6-8 0-2 1-4 3-5"/><circle cx="9" cy="9" r="2.5"/><circle cx="16" cy="15" r="2.5"/><path d="M18 5c1.5 1 2 3 1.5 5"/></svg></div>
+          <h3>A personalized route map</h3>
+          <p>Semesters as stations, courses as stops along the line. You always see where you are, what's next, and exactly when you'll graduate — rendered as a clean, legible map, not a spreadsheet.</p>
+          <span class="tag">Visual route map</span>
+        </div>
+        <div class="card teal reveal">
+          <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><path d="M7 7l2.5 2.5M14.5 14.5 17 17M17 7l-2.5 2.5M9.5 14.5 7 17"/></svg></div>
+          <h3>Live rerouting</h3>
+          <p>When a course breaks, you see the old plan struck through and the new one highlighted — with a one-line explanation of why it still works.</p>
+          <span class="tag">The “holy shit” moment</span>
+        </div>
+        <div class="card reveal">
+          <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H8l-4 4V5a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2z"/></svg></div>
+          <h3>Grounded answers</h3>
+          <p>Every answer is tied to ASU's actual major maps and course data — not a generic LLM guessing. Ask, and get something you can act on.</p>
+          <span class="tag">Chat · grounded Q&amp;A</span>
+        </div>
+        <div class="card wide reveal">
+          <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4M8 21h8"/></svg></div>
+          <h3>Talk to it, literally</h3>
+          <p>Compass speaks and listens. Ask a question by voice at any point in the flow and get a spoken answer back — built on ASU AIR's speech models. It's an advisor you can just talk to, like the abstract intelligence it is.</p>
+          <span class="tag">Voice in / out</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROUTE MAP TEASER -->
+    <section id="route" style="padding-top:20px">
+      <div class="sec-head reveal">
+        <span class="kicker">See it in action</span>
+        <h2>When Semester 3 breaks, Compass already fixed it.</h2>
+        <p>This is the moment judges remember. Two classes fail at registration — and your graduation date doesn't move.</p>
+      </div>
+      <div class="map-panel reveal">
+        <div class="head">
+          <div class="t">CS, BS — route to <span>December 2027</span></div>
+          <div class="map-legend">
+            <span><i style="background:var(--maroon)"></i>Done</span>
+            <span><i style="background:var(--teal)"></i>Now · rerouted</span>
+            <span><i style="background:var(--sand-deep)"></i>Upcoming</span>
+          </div>
+        </div>
+        <div class="rail">
+          <div class="station">
+            <span class="node"></span>
+            <div class="card-in">
+              <div class="sem">Semester 1</div>
+              <h4>Done</h4>
+              <div class="course"><code>CSE110</code><span class="badge ok">✓</span></div>
+              <div class="course"><code>MAT265</code><span class="badge ok">✓</span></div>
+            </div>
+          </div>
+          <div class="station">
+            <span class="node"></span>
+            <div class="card-in">
+              <div class="sem">Semester 2</div>
+              <h4>Done</h4>
+              <div class="course"><code>CSE205</code><span class="badge ok">✓</span></div>
+              <div class="course"><code>ENG102</code><span class="badge ok">✓</span></div>
+            </div>
+          </div>
+          <div class="station now">
+            <span class="node"></span>
+            <div class="card-in">
+              <div class="sem">Semester 3 · now</div>
+              <h4>Rerouted</h4>
+              <div class="course"><code>CSE355</code><span class="badge swap">→ Sem 4</span></div>
+              <div class="course"><code>CSE240</code><span class="badge full">not offered</span></div>
+              <div class="course"><code>CSE230</code><span class="badge swap">substituted</span></div>
+            </div>
+          </div>
+          <div class="station">
+            <span class="node"></span>
+            <div class="card-in">
+              <div class="sem">Semester 4</div>
+              <h4>Upcoming</h4>
+              <div class="course"><code>CSE355</code><span class="badge ok">rescheduled</span></div>
+              <div class="course"><code>…</code><span class="badge ok">on track</span></div>
+            </div>
+          </div>
+          <div class="station">
+            <span class="node"></span>
+            <div class="card-in">
+              <div class="sem">Semesters 5–8</div>
+              <h4>On track</h4>
+              <div class="course"><code>grad 2027</code><span class="badge ok">unchanged</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="reroute-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          <span>CSE240 wasn't offered, so Compass substituted <b>CSE230</b> and moved CSE355 to Semester 4 — every prerequisite still holds, and you still graduate December 2027.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="voice" style="padding-top:20px">
+      <div class="cta-panel reveal">
+        <h2>Stop finding out three weeks later.</h2>
+        <p>Your advisor shouldn't be a meeting you request in December. Compass is here now — ready to plan your route and reroute you the instant things change.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#start">Build my route</a>
+          <a class="btn btn-ghost" href="#how">Watch the 90-second demo</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="foot">
+        <a class="brand" href="#">
+          <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5 13 13l-4.5 2.5L11 11z"/></svg></span>
+          <span class="brand-name">Compass<b>.</b></span>
+        </a>
+        <small>ASU AIR Spark Challenge · design mockup — not affiliated with ASU.</small>
+        <div class="flinks">
+          <a href="#how">How it works</a>
+          <a href="#route">Your route</a>
+          <a href="#start">Start</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+<script>
+  // Scroll reveal
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.14});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // Subtle 3D tilt on the avatar (the star)
+  const stage = document.getElementById('stage');
+  const avatar = document.getElementById('avatar');
+  if (stage && avatar && matchMedia('(pointer:fine)').matches){
+    stage.addEventListener('mousemove',(e)=>{
+      const r = stage.getBoundingClientRect();
+      const x = (e.clientX - r.left)/r.width - .5;
+      const y = (e.clientY - r.top)/r.height - .5;
+      avatar.style.transform = `rotateY(${x*14}deg) rotateX(${ -y*14 }deg)`;
+    });
+    stage.addEventListener('mouseleave',()=>{ avatar.style.transform='rotateY(0) rotateX(0)'; });
+  }
+
+  // Typing effect in the Ask pill
+  const typed = document.getElementById('typed');
+  if (typed){
+    const phrases = [
+      "Will CSE355 still fit my schedule?",
+      "What's the easiest way to finish my major?",
+      "I want a 3.5+ GPA — should I drop CSE355?",
+      "Where do I even start as a freshman?"
+    ];
+    let pi=0, ci=phrases[0].length, del=true;
+    (function tick(){
+      const cur = phrases[pi];
+      typed.textContent = cur.slice(0,ci);
+      if (!del){ ci++; if (ci>cur.length){ del=true; setTimeout(tick,1400); return; } }
+      else { ci--; if (ci<0){ del=false; pi=(pi+1)%phrases.length; } }
+      setTimeout(tick, del?38:74);
+    })();
+  }
+</script>
+</body>
+</html>
