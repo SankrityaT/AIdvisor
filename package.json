@@ -1,24 +1,24 @@
 {
-  "name": "compass-backend",
-  "version": "1.0.0",
+  "name": "aidesvisor",
+  "version": "0.1.0",
   "private": true,
-  "type": "module",
-  "engines": {
-    "node": ">=20"
-  },
   "scripts": {
-    "typecheck": "tsc --noEmit",
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "build": "npm run typecheck"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
   },
   "dependencies": {
-    "zod": "^3.24.1"
+    "next": "16.3.4",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
   },
   "devDependencies": {
-    "@types/node": "^22.10.5",
-    "typescript": "^5.7.2",
-    "vercel": "^48.1.0",
-    "vitest": "^2.1.8"
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.4",
+    "typescript": "^5"
   }
 }
