@@ -1,0 +1,166 @@
+{
+  "version": "2026-demo-1",
+  "major": "Computer Science, BS",
+  "plan_kind": "core_pathway",
+  "graduation_target": "May 2028",
+  "total_semesters": 8,
+  "semesters": [
+    { "semester": 1, "courses": ["CSE110", "MAT265"] },
+    { "semester": 2, "courses": ["CSE205", "ENG102"] },
+    { "semester": 3, "courses": ["CSE240", "MAT243"] },
+    { "semester": 4, "courses": ["CSE230", "HUAD-ELECTIVE"] },
+    { "semester": 5, "courses": ["CSE310", "CSE360"] },
+    { "semester": 6, "courses": ["CSE330", "CSE355"] },
+    { "semester": 7, "courses": ["CSE365", "CSE412"] },
+    { "semester": 8, "courses": ["CSE485", "TECH-ELECTIVE"] }
+  ],
+  "courses": [
+    {
+      "code": "CSE110",
+      "title": "Principles of Programming",
+      "credits": 3,
+      "prereqs": [],
+      "offered_terms": ["fall", "spring"],
+      "requirement_id": "cs-intro",
+      "career_tags": ["software-engineering", "programming"]
+    },
+    {
+      "code": "MAT265",
+      "title": "Calculus for Engineers I",
+      "credits": 3,
+      "prereqs": [],
+      "offered_terms": ["fall", "spring"],
+      "requirement_id": "calculus-1",
+      "career_tags": ["foundations"]
+    },
+    {
+      "code": "CSE205",
+      "title": "Object-Oriented Programming and Data Structures",
+      "credits": 3,
+      "prereqs": ["CSE110"],
+      "offered_terms": ["fall", "spring"],
+      "requirement_id": "cs-oop",
+      "career_tags": ["software-engineering", "programming"]
+    },
+    {
+      "code": "ENG102",
+      "title": "First-Year Composition II",
+      "credits": 3,
+      "prereqs": [],
+      "offered_terms": ["fall", "spring"],
+      "requirement_id": "composition-2",
+      "career_tags": ["communication"]
+    },
+    {
+      "code": "CSE240",
+      "title": "Introduction to Programming Languages",
+      "credits": 3,
+      "prereqs": ["CSE205"],
+      "offered_terms": ["fall", "spring"],
+      "requirement_id": "programming-languages-intro",
+      "career_tags": ["software-engineering", "programming"]
+    },
+    {
+      "code": "MAT243",
+      "title": "Discrete Mathematical Structures",
+      "credits": 3,
+      "prereqs": [],
+      "offered_terms": ["fall", "spring"],
+      "requirement_id": "discrete-math",
+      "career_tags": ["algorithms", "foundations"]
+    },
+    {
+      "code": "CSE230",
+      "title": "Computer Organization and Assembly Language Programming",
+      "credits": 3,
+      "prereqs": ["CSE205"],
+      "offered_terms": ["fall", "spring"],
+      "requirement_id": "computer-organization",
+      "career_tags": ["systems", "software-engineering"]
+    },
+    {
+      "code": "HUAD-ELECTIVE",
+      "title": "Humanities, Arts and Design Requirement",
+      "credits": 3,
+      "prereqs": [],
+      "offered_terms": ["fall", "spring"],
+      "requirement_id": "huad",
+      "substitution_group": "huad-approved",
+      "career_tags": ["communication"]
+    },
+    {
+      "code": "CSE310",
+      "title": "Data Structures and Algorithms",
+      "credits": 3,
+      "prereqs": ["CSE240", "MAT243"],
+      "offered_terms": ["fall", "spring"],
+      "requirement_id": "algorithms",
+      "career_tags": ["software-engineering", "algorithms"]
+    },
+    {
+      "code": "CSE360",
+      "title": "Introduction to Software Engineering",
+      "credits": 3,
+      "prereqs": ["CSE205"],
+      "offered_terms": ["fall", "spring"],
+      "requirement_id": "software-engineering",
+      "career_tags": ["software-engineering", "teamwork"]
+    },
+    {
+      "code": "CSE330",
+      "title": "Operating Systems",
+      "credits": 3,
+      "prereqs": ["CSE230", "CSE310"],
+      "offered_terms": ["fall", "spring"],
+      "requirement_id": "operating-systems",
+      "career_tags": ["systems", "software-engineering"]
+    },
+    {
+      "code": "CSE355",
+      "title": "Introduction to Theoretical Computer Science",
+      "credits": 3,
+      "prereqs": ["MAT243"],
+      "offered_terms": ["fall", "spring"],
+      "requirement_id": "theory",
+      "career_tags": ["algorithms", "foundations"]
+    },
+    {
+      "code": "CSE365",
+      "title": "Information Assurance",
+      "credits": 3,
+      "prereqs": ["CSE230"],
+      "offered_terms": ["fall", "spring"],
+      "requirement_id": "security",
+      "career_tags": ["security", "systems"]
+    },
+    {
+      "code": "CSE412",
+      "title": "Database Management",
+      "credits": 3,
+      "prereqs": ["CSE310"],
+      "offered_terms": ["fall", "spring"],
+      "requirement_id": "advanced-computing",
+      "substitution_group": "advanced-computing-elective",
+      "career_tags": ["software-engineering", "data"]
+    },
+    {
+      "code": "CSE485",
+      "title": "Computer Science Capstone Project I",
+      "credits": 3,
+      "prereqs": ["CSE360"],
+      "offered_terms": ["fall", "spring"],
+      "requirement_id": "capstone",
+      "career_tags": ["software-engineering", "teamwork"]
+    },
+    {
+      "code": "TECH-ELECTIVE",
+      "title": "Technical Elective",
+      "credits": 3,
+      "prereqs": ["CSE310"],
+      "offered_terms": ["fall", "spring"],
+      "requirement_id": "technical-elective",
+      "substitution_group": "approved-technical-elective",
+      "career_tags": ["software-engineering"]
+    }
+  ]
+}
