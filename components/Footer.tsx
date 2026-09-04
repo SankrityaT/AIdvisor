@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { LogoMark } from "./Nav";
+import AIDvisor from "@/app/components/mascot";
 
 const cols = [
   {
@@ -39,9 +39,9 @@ export default function Footer() {
         <div className="foot-grid">
           <div className="foot-brand">
             <Link className="logo" href="#top">
-              <span className="logo-mark">
-                <LogoMark />
-              </span>
+              <span className="logo-mark is-mascot">
+              <AIDvisor state="idle" size={28} />
+            </span>
               <span>
                 AIDvisor
                 <small>ASU AI ADVISOR</small>

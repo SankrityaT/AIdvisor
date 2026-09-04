@@ -2,7 +2,7 @@
 // SERVER ONLY. Streams AgentEvents over SSE (so the Agent Activity panel
 // lights up while the student is talking), then one { reply } result.
 
-import { AgentRun, streamPipeline } from "@/lib/agents";
+import { AgentRun, streamPipeline, jsonPipeline } from "@/lib/agents";
 import { chat, MODELS } from "@/lib/asuair";
 import { buildCourseIndex, type CourseIndex } from "@/lib/prereq";
 import type { BreakReason, Course, PlanSemester } from "@/lib/types";
@@ -230,8 +230,9 @@ function cleanHistory(messages: unknown): ChatTurn[] {
     .slice(-MAX_HISTORY);
 }
 
-export function POST(req: Request): Response {
-  return streamPipeline<ChatResult>(async (run: AgentRun) => {
+export async function POST(req: Request): Promise<Response> {
+  const noStream = new URL(req.url).searchParams.get("stream") === "off";
+  const pipeline = async (run: AgentRun): Promise<ChatResult> => {
     let body: Partial<ChatRequestBody>;
     try {
       body = (await req.json()) as Partial<ChatRequestBody>;
@@ -270,5 +271,6 @@ export function POST(req: Request): Response {
       // Never blow up the UI — hand back something the student can hear.
       return { reply: FALLBACK_REPLY };
     }
-  });
+  };
+  return noStream ? jsonPipeline(pipeline) : streamPipeline(pipeline);
 }

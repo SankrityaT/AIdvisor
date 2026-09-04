@@ -1,6 +1,7 @@
 // The reroute debate: analyst -> three concurrent reasoner personas -> judge.
 // Every proposal is validated against the real prereq graph before it ships.
-import { streamPipeline } from "@/lib/agents";
+import { streamPipeline, jsonPipeline } from "@/lib/agents";
+import type { AgentRun } from "@/lib/agents";
 import { reroutePlan } from "@/lib/pipeline";
 import { loadData } from "@/lib/data";
 import { DEMO_DISRUPTION } from "@/lib/demo";
@@ -22,8 +23,10 @@ export async function POST(req: Request) {
     });
   }
   const disruption = body.disruption ?? DEMO_DISRUPTION;
-  return streamPipeline(async (run) => {
+  const noStream = new URL(req.url).searchParams.get("stream") === "off";
+  const pipeline = async (run: AgentRun) => {
     const { map, sentiment } = await loadData();
     return reroutePlan(run, body.quiz!, map, sentiment, body.flowchart!, disruption, body.forceDeadEnd ?? false);
-  });
+  };
+  return noStream ? jsonPipeline(pipeline) : streamPipeline(pipeline);
 }

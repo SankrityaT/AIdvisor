@@ -47,47 +47,6 @@ function normalize(plan: PlanSemester[]): PlanSemester[] {
     }));
 }
 
-/**
- * The student has already completed semesters 1..CURRENT_SEMESTER-1 and is
- * REGISTERED for CURRENT_SEMESTER, so those are immovable. This also keeps the
- * scripted disruption valid: the planner cannot quietly relocate CSE355/CSE240
- * out of the semester the demo breaks.
- * Reconciles a model plan against that lock, guaranteeing every course in the
- * major map appears exactly once.
- */
-function reconcile(candidate: PlanSemester[], baseline: PlanSemester[]): PlanSemester[] {
-  const locked = baseline.filter((s) => s.semester <= CURRENT_SEMESTER);
-  const lockedCodes = new Set(locked.flatMap((s) => s.courses.map((c) => c.toUpperCase())));
-  const all = new Set(baseline.flatMap((s) => s.courses.map((c) => c.toUpperCase())));
-  const seen = new Set(lockedCodes);
-
-  const tail = baseline
-    .filter((s) => s.semester > CURRENT_SEMESTER)
-    .map((s) => {
-      const proposed = candidate.find((c) => c.semester === s.semester);
-      const courses: string[] = [];
-      for (const raw of proposed?.courses ?? s.courses) {
-        const code = String(raw).toUpperCase();
-        if (!all.has(code) || seen.has(code)) continue; // unknown or already placed
-        seen.add(code);
-        courses.push(code);
-      }
-      return { semester: s.semester, term: termFor(s.semester), courses, status: statusFor(s.semester) };
-    });
-
-  // Any course the model dropped goes back to its baseline semester.
-  for (const s of baseline) {
-    if (s.semester <= CURRENT_SEMESTER) continue;
-    for (const raw of s.courses) {
-      const code = raw.toUpperCase();
-      if (seen.has(code)) continue;
-      seen.add(code);
-      tail.find((t) => t.semester === s.semester)?.courses.push(code);
-    }
-  }
-  return [...locked, ...tail];
-}
-
 // ── Pipeline 1: generate the student's route ───────────────────────────
 
 interface Constraints { strategy: string; per_semester_credit_target: number; notes: string[] }
