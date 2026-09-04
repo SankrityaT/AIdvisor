@@ -1,0 +1,18 @@
+[
+  { "code": "CSE110", "difficulty": "easy", "workload": 2, "blurb": "A friendly programming introduction with frequent practice assignments." },
+  { "code": "MAT265", "difficulty": "medium", "workload": 3, "blurb": "Steady weekly problem solving; keeping up with practice matters." },
+  { "code": "CSE205", "difficulty": "medium", "workload": 3, "blurb": "Project-driven object-oriented programming with a moderate pace." },
+  { "code": "ENG102", "difficulty": "easy", "workload": 2, "blurb": "Predictable writing milestones and useful feedback cycles." },
+  { "code": "CSE240", "difficulty": "medium", "workload": 3, "blurb": "Fair grading and a useful introduction to multiple programming paradigms." },
+  { "code": "MAT243", "difficulty": "hard", "workload": 4, "blurb": "Proof-oriented material rewards consistent practice rather than cramming." },
+  { "code": "CSE230", "difficulty": "hard", "workload": 4, "blurb": "Low-level programming assignments can take longer than expected." },
+  { "code": "HUAD-ELECTIVE", "difficulty": "easy", "workload": 1, "blurb": "A flexible general-studies slot that can balance a technical semester." },
+  { "code": "CSE310", "difficulty": "hard", "workload": 5, "blurb": "Algorithm analysis and implementation produce a demanding workload." },
+  { "code": "CSE360", "difficulty": "medium", "workload": 3, "blurb": "Team projects emphasize requirements, design, and maintainable code." },
+  { "code": "CSE330", "difficulty": "hard", "workload": 5, "blurb": "Systems projects are intensive and benefit from starting early." },
+  { "code": "CSE355", "difficulty": "hard", "workload": 4, "blurb": "Proof-based theory is conceptually dense but builds strong foundations." },
+  { "code": "CSE365", "difficulty": "medium", "workload": 3, "blurb": "Hands-on security work keeps the course engaging at a moderate pace." },
+  { "code": "CSE412", "difficulty": "medium", "workload": 3, "blurb": "Database design and query projects map well to industry work." },
+  { "code": "CSE485", "difficulty": "hard", "workload": 4, "blurb": "Capstone effort varies by team, with substantial project coordination." },
+  { "code": "TECH-ELECTIVE", "difficulty": "medium", "workload": 3, "blurb": "The workload depends on the selected approved technical elective." }
+]
