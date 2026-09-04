@@ -133,7 +133,7 @@ export async function speakWithAir(
       body: JSON.stringify({
         model: config.ttsModel,
         input: text,
-        voice: voice ?? "default",
+        voice: voice ?? "ballad",
         response_format: "mp3"
       })
     },
