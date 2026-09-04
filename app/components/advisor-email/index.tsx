@@ -1,7 +1,7 @@
 "use client";
 
 // ── Advisor email draft ────────────────────────────────────────────────
-// The last stop on the dead-end path: AIVISOR could not solve the break,
+// The last stop on the dead-end path: AIDVisor could not solve the break,
 // it produced an AdvisorHandoff, and this turns that handoff into an email
 // the student can actually send. Composed DETERMINISTICALLY — no model
 // call, no fetch, no await. It renders the instant the handoff lands.
@@ -177,7 +177,7 @@ export default function AdvisorEmailDraft({
               Email your advisor
             </h3>
             <p className="mt-1.5 text-sm leading-relaxed text-mist/70">
-              If AIVISOR ever hits a break it cannot route around on its own, it
+              If AIDVisor ever hits a break it cannot route around on its own, it
               writes up the handoff and a ready-to-send email appears here.
             </p>
           </div>

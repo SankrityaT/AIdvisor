@@ -9,7 +9,7 @@ export default function Hero() {
         <div className="hero-copy">
           <Reveal>
             <span className="eyebrow">
-              <span className="pulse" /> AIVISOR · your AI advisor for every Sun Devil
+              <span className="pulse" /> AIDVisor · your AI advisor for every Sun Devil
             </span>
           </Reveal>
           <Reveal delay={70}>
@@ -26,7 +26,7 @@ export default function Hero() {
           </Reveal>
           <Reveal delay={140}>
             <p className="hero-sub">
-              Meet <b>AIVISOR</b>. From degree checks and financial aid to housing,
+              Meet <b>AIDVisor</b>. From degree checks and financial aid to housing,
               health, and career — get clear, honest answers in seconds.{" "}
               <b>Any campus. Any hour. Zero judgment.</b>
             </p>
@@ -34,10 +34,10 @@ export default function Hero() {
           <Reveal delay={210}>
             <div className="hero-ctas">
               <Link className="btn btn-primary" href="/advisor">
-                Ask AIVISOR a question <span className="arrow">→</span>
+                Ask AIDVisor a question <span className="arrow">→</span>
               </Link>
               <Link className="btn btn-ghost" href="#how">
-                See how AIVISOR works
+                See how AIDVisor works
               </Link>
             </div>
           </Reveal>

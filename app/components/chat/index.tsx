@@ -1,6 +1,6 @@
 "use client";
 
-// ── AIVISOR chat panel ────────────────────────────────────────────────
+// ── AIDVisor chat panel ────────────────────────────────────────────────
 // Presentational + self-contained. Talks to /api/chat over the shared SSE
 // pipeline so the lead's Agent Activity panel lights up during chat.
 // NOTE: never import lib/asuair here — that is server-only.
@@ -127,7 +127,7 @@ export default function ChatPanel({
           <CompassMark className="h-4 w-4 text-gold" />
         </span>
         <div className="min-w-0">
-          <h2 className="text-sm font-semibold tracking-tight text-white">AIVISOR</h2>
+          <h2 className="text-sm font-semibold tracking-tight text-white">AIDVisor</h2>
           <p className="truncate text-xs text-mist">
             Answers come from your route, not the internet
           </p>
@@ -244,8 +244,8 @@ export default function ChatPanel({
           value={input}
           onChange={(e) => setInput(e.target.value)}
           disabled={busy}
-          placeholder={busy ? "AIVISOR is thinking…" : "Ask about your plan…"}
-          aria-label="Ask AIVISOR about your plan"
+          placeholder={busy ? "AIDVisor is thinking…" : "Ask about your plan…"}
+          aria-label="Ask AIDVisor about your plan"
           className="min-w-0 flex-1 rounded-xl border border-ink-700 bg-ink-850 px-3.5 py-2.5 text-sm text-white outline-none transition-colors placeholder:text-mist/70 focus:border-gold/50 disabled:opacity-60"
         />
         <button

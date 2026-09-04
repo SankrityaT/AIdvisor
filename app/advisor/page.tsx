@@ -16,7 +16,7 @@ import type {
 
 import Quiz from "@/app/components/quiz";
 import RouteMap from "@/app/components/routemap";
-import AIVISOR, { type MascotState } from "@/app/components/mascot";
+import AIDVisor, { type MascotState } from "@/app/components/mascot";
 import AgentPanel from "@/app/components/agentpanel";
 import ChatPanel from "@/app/components/chat";
 import VoiceControl from "@/app/components/voice";
@@ -223,7 +223,7 @@ export default function Page() {
       <main className="min-h-screen px-6 py-10">
         <Quiz onComplete={handleQuiz} submitting={busy} />
         <SlotPortal selector="[data-slot='mascot']">
-          <AIVISOR state={busy ? "thinking" : "idle"} size={busy ? 44 : 80} />
+          <AIDVisor state={busy ? "thinking" : "idle"} size={busy ? 44 : 80} />
         </SlotPortal>
         {error && (
           <p className="mx-auto mt-6 max-w-2xl rounded-xl border border-alert/40 bg-alert/10 px-4 py-3 text-sm text-alert">
@@ -245,7 +245,7 @@ export default function Page() {
     <main className="min-h-screen px-5 py-6 lg:px-8">
       {/* header */}
       <header className="mb-6 flex flex-wrap items-center gap-5 border-b border-ink-700 pb-5">
-        <AIVISOR state={mascot} size={72} speech={mascotLine} />
+        <AIDVisor state={mascot} size={72} speech={mascotLine} />
         <div className="min-w-0">
           <h1 className="text-2xl font-semibold tracking-tight text-gold">Compass</h1>
           <p className="text-sm text-mist">

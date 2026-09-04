@@ -423,7 +423,7 @@ function Key({ children }: { children: ReactNode }) {
 function Header({ compact }: { compact: boolean }) {
   return (
     <header className={compact ? "flex items-center gap-3" : "flex items-start gap-4"}>
-      {/* ── MASCOT SLOT: lead drops the AIVISOR mascot in here at integration ── */}
+      {/* ── MASCOT SLOT: lead drops the AIDVisor mascot in here at integration ── */}
       <div
         data-slot="mascot"
         className={compact ? "h-11 w-11 shrink-0" : "h-20 w-20 shrink-0"}

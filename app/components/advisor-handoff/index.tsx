@@ -358,7 +358,7 @@ export default function AdvisorHandoffDoc({
               Prepared by Compass from the student&rsquo;s major map and live registration state.
               Prerequisite conclusions are validated deterministically, not inferred.
             </p>
-            <p className="text-[10.5px] uppercase tracking-[0.14em] text-[#a49bad]">ASU · AIVISOR</p>
+            <p className="text-[10.5px] uppercase tracking-[0.14em] text-[#a49bad]">ASU · AIDVisor</p>
           </footer>
         </div>
       </article>

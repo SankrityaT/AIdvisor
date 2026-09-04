@@ -95,7 +95,7 @@ export const ROSTER: Record<AgentKey, RosterEntry> = {
   },
   chat: {
     key: "chat",
-    role: "AIVISOR",
+    role: "AIDVisor",
     label: "Answering your question",
     model: MODELS.chat,
   },

@@ -21,7 +21,7 @@ export interface ChatTurn {
 }
 
 /**
- * Everything AIVISOR is allowed to know about this student.
+ * Everything AIDVisor is allowed to know about this student.
  * The lead passes this straight through from page.tsx state.
  */
 export interface ChatContext {

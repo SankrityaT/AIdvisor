@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * FallbackMascot — AIVISOR drawn as pure inline SVG + CSS keyframes.
+ * FallbackMascot — AIDVisor drawn as pure inline SVG + CSS keyframes.
  *
  * This is the guaranteed-shippable version of the character. `index.tsx`
  * renders it whenever the Lottie JSON is missing, still loading, or throws.
@@ -52,7 +52,7 @@ export default function FallbackMascot({
       height={size}
       className={className}
       role="img"
-      aria-label={`AIVISOR, ${state}`}
+      aria-label={`AIDVisor, ${state}`}
       style={{ overflow: "visible", display: "block" }}
     >
       <style>{CSS}</style>

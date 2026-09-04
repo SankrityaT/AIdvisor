@@ -318,7 +318,7 @@ function EmptyRoute({ graduationTarget }: { graduationTarget?: string }) {
       </svg>
       <p className="mt-5 text-sm font-medium text-[#f4f1f7]">No route plotted yet</p>
       <p className="mt-1 max-w-sm text-center text-[12px] leading-relaxed text-mist">
-        Answer the quiz and AIVISOR will lay down the line — one station per
+        Answer the quiz and AIDVisor will lay down the line — one station per
         semester, all the way to the terminus.
       </p>
       {graduationTarget ? (

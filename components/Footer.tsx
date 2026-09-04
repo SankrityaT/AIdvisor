@@ -5,9 +5,9 @@ const cols = [
   {
     title: "Product",
     links: [
-      { label: "What AIVISOR handles", href: "#handles" },
+      { label: "What AIDVisor handles", href: "#handles" },
       { label: "How it works", href: "#how" },
-      { label: "Why trust AIVISOR", href: "#trust" },
+      { label: "Why trust AIDVisor", href: "#trust" },
       { label: "Student stories", href: "#stories" },
     ],
   },
@@ -43,7 +43,7 @@ export default function Footer() {
                 <LogoMark />
               </span>
               <span>
-                AIVISOR
+                AIDVisor
                 <small>ASU AI ADVISOR</small>
               </span>
             </Link>
@@ -67,11 +67,11 @@ export default function Footer() {
         </div>
         <div className="foot-bottom">
           <span>
-            © 2026 AIVISOR · a concept project, not affiliated with Arizona State
+            © 2026 AIDVisor · a concept project, not affiliated with Arizona State
             University.
           </span>
           <span className="disc">
-            AIVISOR is an AI assistant. For urgent matters, medical needs, or
+            AIDVisor is an AI assistant. For urgent matters, medical needs, or
             binding academic decisions, always confirm with an official ASU
             service.
           </span>

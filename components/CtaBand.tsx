@@ -23,7 +23,7 @@ export default function CtaBand() {
               advisor that&apos;s always awake.
             </p>
             <Link className="btn btn-white" href="/advisor">
-              Meet AIVISOR — it&apos;s free <span className="arrow">→</span>
+              Meet AIDVisor — it&apos;s free <span className="arrow">→</span>
             </Link>
           </div>
         </Reveal>

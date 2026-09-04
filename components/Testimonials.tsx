@@ -4,7 +4,7 @@ const quotes = [
   {
     text: (
       <>
-        &quot;I asked AIVISOR at 2am whether my transfer credits would count. It
+        &quot;I asked AIDVisor at 2am whether my transfer credits would count. It
         answered in a minute with the <em>exact registrar page</em>. I would
         have panicked for a week.&quot;
       </>
@@ -31,7 +31,7 @@ const quotes = [
   {
     text: (
       <>
-        &quot;I was scared to ask about withdrawing. AIVISOR didn&apos;t make me
+        &quot;I was scared to ask about withdrawing. AIDVisor didn&apos;t make me
         feel dumb — it laid out the deadlines, the refund dates, and{" "}
         <em>routed me to a counselor</em>. Zero shame.&quot;
       </>
