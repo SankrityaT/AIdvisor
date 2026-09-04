@@ -1,9 +1,14 @@
-# compass-backend ships as standalone Vercel Functions under api/, which would
-# silently take over the identical routes served by the Next.js App Router
-# (/api/plan, /api/reroute, /api/chat, /api/voice/*). Excluded from the deploy so
-# the Next routes win. Nothing is deleted — the source stays in the repo and the
-# vitest suite still runs locally.
-api/
-src/
-tests/
-vitest.config.ts
+# compass-backend ships as standalone Vercel Functions under /api, which would
+# otherwise silently take over the identical routes served by the Next.js App
+# Router (/api/plan, /api/reroute, /api/chat, /api/voice/*). Excluded from the
+# deploy so the Next routes win. Nothing is deleted — the source stays in the
+# repo and the vitest suite still runs locally.
+#
+# EVERY PATTERN MUST BE ROOT-ANCHORED WITH A LEADING SLASH.
+# .vercelignore uses .gitignore semantics, so a bare `api/` matches a directory
+# named `api` at ANY depth — including app/api/, which strips the entire App
+# Router API surface from the deployment and returns 404 for every route.
+/api/
+/src/
+/tests/
+/vitest.config.ts
