@@ -1,70 +1,84 @@
-# Compass Backend
+# AIVISOR — Compass
 
-Stateless Vercel backend for the Compass ASU AIR Spark Challenge demo. It provides a validated Computer Science core pathway, a deterministic registration disruption/reroute, grounded chat, and ASU AIR voice proxies.
+**An AI academic advisor that builds a student a personalized route to graduation, then reroutes it live the moment reality gets in the way.**
 
-## Run locally
+Built for the **ASU AIR Spark Challenge**. Every model call runs on ASU's AIR gateway (`openai.rc.asu.edu/v1`).
+
+---
+
+## The problem
+
+A class fills up. A course isn't offered. Today that means a student finds out three
+weeks later, in an advisor's inbox. AIVISOR reroutes the degree plan in about
+fourteen seconds — and keeps the graduation date.
+
+## Demo path (90 seconds)
+
+1. **Quiz** — major, career goal, risk tolerance, priority. ~10 seconds.
+2. **Route map renders** — semesters as stations, courses as stops along a gold line.
+3. **Simulate Registration** — `CSE355` comes back FULL, `CSE240` NOT OFFERED.
+4. **Graduation Confidence drops** 94 → 49, with specific reasons.
+5. **Three reasoners debate concurrently** — fastest graduation vs. lightest workload
+   vs. best career fit. A judge picks one and says why in a sentence.
+6. **Apply the reroute** — old plan struck through, new plan in teal, confidence back
+   to 91, **graduation date unchanged**.
+7. **Ask AIVISOR out loud** — speech in, spoken answer out, grounded in *your* plan.
+
+## The multi-agent pipeline is real
+
+The Agent Activity panel is not a loading animation. Every row is one genuine ASU AIR
+call, showing the real model id and real elapsed time.
+
+| Stage | Agents | Model |
+|---|---|---|
+| Plan | Curator → Planner → Critic | `devstral2-123b`, `glm-5-3-flash` |
+| Reroute | Analyst → **3 Reasoners in parallel** → Judge | `qwen3-235b-a22b-instruct-2507`, `devstral2-123b` |
+| Live | Advisor (why this class), Narrator, Chat | `qwen3-coder-next`, `qwen38-27b` |
+| Voice | ASR / TTS | `qwen3-asr-1p7b`, `qwen3-tts-customvoice-1p7b` |
+
+**AI proposes, deterministic code disposes.** Every plan an LLM produces is validated
+against a real prerequisite graph (`lib/prereq.ts`) before a student ever sees it, and
+`lib/solver.ts` can construct a valid reroute on its own. If the gateway is slow or
+degraded mid-demo, the reroute still works.
+
+## Features
+
+- Route-map visualization with live reroute diff
+- Graduation Confidence score that moves at the two moments that matter
+- Multi-agent reroute debate with a judge
+- Grounded chat — answers cite *your* courses and semesters, never generic advice
+- Voice in / voice out
+- "Why this class" relevance, weighted to the stated career goal
+- Drag-to-reschedule what-if validation against the prereq graph
+- Time-preference conflict checking
+- Advisor handoff document + ready-to-send email for genuine dead ends
+- **AIVISOR**, an animated Lottie mascot who reacts to what's happening
+
+## Run it
 
 ```bash
 npm install
-cp .env.example .env.local
-npx vercel dev
+export OPENAI_API_KEY=<your ASU AIR key>
+npm run dev
 ```
 
-Set `AIR_API_KEY` in `.env.local` to enable the ASU AIR integration. The local
-file is ignored by git and must never be committed. This project uses
-`glm-5-3-flash` for chat and plan explanations and
-`qwen3-235b-a22b-thinking-2507` for reroute reasoning by default. Both models
-are served through the OpenAI-compatible endpoint configured by `AIR_BASE_URL`.
+Open http://localhost:3000. No database, no auth, no build step beyond Next.
 
-AIR credentials are optional for planning, rerouting, and chat because those
-routes have deterministic fallbacks. ASR requires AIR. TTS returns a text
-fallback when AIR is unavailable. The voice model variables in `.env.example`
-are optional overrides and are independent of the text-model selection.
+## Stack
 
-## API
+Next.js 16 (App Router) · React 19 · TypeScript · Tailwind v4 · Lottie
 
-- `GET /api/health`
-- `GET /api/catalog`
-- `POST /api/plan`
-- `POST /api/reroute`
-- `POST /api/chat`
-- `POST /api/voice/transcribe`
-- `POST /api/voice/speak`
-
-### Generate a plan
-
-```json
-{
-  "major": "Computer Science, BS",
-  "goal": "software engineering career",
-  "riskTolerance": "balanced",
-  "priority": "protect_gpa"
-}
+```
+app/          UI + API routes
+app/api/      plan, reroute, chat, relevance, narrative, handoff, voice
+lib/          types, ASU AIR client, agent orchestration, prereq graph, solver
+data/         ASU CS major map, prerequisites, course sentiment
 ```
 
-Send the complete returned `data.plan` to `/api/reroute` as `currentPlan`, along with
-`"scenarioId": "semester-3-registration"`. See [docs/API.md](docs/API.md) for the
-complete frontend contract and examples.
+## Honest notes
 
-The frontend must retain the active plan and chat context; Vercel Functions do not use server-side session state.
-
-## Deploy
-
-Create or import the project in Vercel, then configure `AIR_API_KEY`,
-`AIR_BASE_URL`, `AIR_TEXT_MODEL`, and `AIR_REASONER_MODEL` for Preview and
-Production. Configure the same variables for Development when using
-`vercel dev`, which injects that remote environment into the local server.
-Store the secret through the Vercel dashboard or CLI; do not upload `.env.local`
-or the OpenCode configuration. Set `FRONTEND_ORIGIN` to the exact deployed
-frontend origin when a browser frontend is ready. The app uses standard
-TypeScript functions under `api/` and requires no framework.
-
-## Validation
-
-```bash
-npm run typecheck
-npm test
-npx vercel build
-```
-
-The bundled curriculum is a simplified demo core pathway, not a DARS-certified degree audit. Course sentiment is mocked demo data.
+- One major (Computer Science, BS) and one demo persona, per the challenge scope.
+- Course sentiment blurbs are realistic but synthetic, not scraped.
+- `MAT243`'s prerequisite deviates slightly from the live catalog so the scripted
+  disruption has a valid solution — flagged in `data/notes.md`.
+- The disruption is deterministic, not random. That is deliberate: it is a demo.

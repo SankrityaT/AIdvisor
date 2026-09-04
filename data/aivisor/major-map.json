@@ -1,0 +1,232 @@
+{
+  "major": "Computer Science, BS",
+  "total_semesters": 8,
+  "semesters": [
+    {
+      "semester": 1,
+      "courses": [
+        {
+          "code": "CSE110",
+          "title": "Principles of Programming with Java",
+          "credits": 3,
+          "prereqs": []
+        },
+        {
+          "code": "MAT265",
+          "title": "Calculus for Engineers I",
+          "credits": 3,
+          "prereqs": []
+        },
+        {
+          "code": "ENG101",
+          "title": "First-Year Composition",
+          "credits": 3,
+          "prereqs": []
+        },
+        {
+          "code": "COM225",
+          "title": "Public Speaking",
+          "credits": 3,
+          "prereqs": []
+        }
+      ]
+    },
+    {
+      "semester": 2,
+      "courses": [
+        {
+          "code": "CSE205",
+          "title": "Object-Oriented Programming and Data Structures",
+          "credits": 3,
+          "prereqs": ["CSE110"]
+        },
+        {
+          "code": "MAT266",
+          "title": "Calculus for Engineers II",
+          "credits": 3,
+          "prereqs": ["MAT265"]
+        },
+        {
+          "code": "MAT243",
+          "title": "Discrete Mathematical Structures",
+          "credits": 3,
+          "prereqs": ["MAT265"]
+        },
+        {
+          "code": "ENG102",
+          "title": "First-Year Composition",
+          "credits": 3,
+          "prereqs": ["ENG101"]
+        }
+      ]
+    },
+    {
+      "semester": 3,
+      "courses": [
+        {
+          "code": "CSE240",
+          "title": "Introduction to Programming Languages",
+          "credits": 3,
+          "prereqs": ["CSE205"]
+        },
+        {
+          "code": "CSE355",
+          "title": "Introduction to Theoretical Computer Science",
+          "credits": 3,
+          "prereqs": ["CSE205", "MAT243"]
+        },
+        {
+          "code": "MAT342",
+          "title": "Linear Algebra",
+          "credits": 3,
+          "prereqs": ["MAT266"]
+        },
+        {
+          "code": "CHM113",
+          "title": "General Chemistry I",
+          "credits": 4,
+          "prereqs": []
+        }
+      ]
+    },
+    {
+      "semester": 4,
+      "courses": [
+        {
+          "code": "CSE230",
+          "title": "Computer Organization and Assembly Language Programming",
+          "credits": 3,
+          "prereqs": ["CSE205"]
+        },
+        {
+          "code": "CSE310",
+          "title": "Data Structures and Algorithms",
+          "credits": 3,
+          "prereqs": ["CSE205", "MAT243"]
+        },
+        {
+          "code": "CSE360",
+          "title": "Introduction to Software Engineering",
+          "credits": 3,
+          "prereqs": ["CSE205"]
+        },
+        {
+          "code": "PHY121",
+          "title": "University Physics I: Mechanics",
+          "credits": 3,
+          "prereqs": ["MAT265"]
+        }
+      ]
+    },
+    {
+      "semester": 5,
+      "courses": [
+        {
+          "code": "CSE330",
+          "title": "Operating Systems",
+          "credits": 3,
+          "prereqs": ["CSE230", "CSE310"]
+        },
+        {
+          "code": "CSE340",
+          "title": "Principles of Programming Languages",
+          "credits": 3,
+          "prereqs": ["CSE240", "CSE355"]
+        },
+        {
+          "code": "CSE365",
+          "title": "Information Assurance",
+          "credits": 3,
+          "prereqs": ["CSE230", "CSE310"]
+        },
+        {
+          "code": "ECN211",
+          "title": "Macroeconomic Principles",
+          "credits": 3,
+          "prereqs": []
+        }
+      ]
+    },
+    {
+      "semester": 6,
+      "courses": [
+        {
+          "code": "CSE450",
+          "title": "Design and Analysis of Algorithms",
+          "credits": 3,
+          "prereqs": ["CSE310", "CSE355"]
+        },
+        {
+          "code": "CSE460",
+          "title": "Software Analysis and Design",
+          "credits": 3,
+          "prereqs": ["CSE360"]
+        },
+        {
+          "code": "CSE475",
+          "title": "Foundations of Machine Learning",
+          "credits": 3,
+          "prereqs": ["CSE310", "MAT342"]
+        },
+        {
+          "code": "STP420",
+          "title": "Introductory Applied Statistics",
+          "credits": 3,
+          "prereqs": ["MAT266"]
+        }
+      ]
+    },
+    {
+      "semester": 7,
+      "courses": [
+        {
+          "code": "CSE485",
+          "title": "Computer Science Capstone Project I",
+          "credits": 3,
+          "prereqs": ["CSE310", "CSE360"]
+        },
+        {
+          "code": "CSE471",
+          "title": "Introduction to Artificial Intelligence",
+          "credits": 3,
+          "prereqs": ["CSE310", "CSE355"]
+        },
+        {
+          "code": "CSE470",
+          "title": "Computer Graphics",
+          "credits": 3,
+          "prereqs": ["CSE310", "MAT342"]
+        },
+        {
+          "code": "PHI101",
+          "title": "Introduction to Philosophy",
+          "credits": 3,
+          "prereqs": []
+        }
+      ]
+    },
+    {
+      "semester": 8,
+      "courses": [
+        {
+          "code": "CSE486",
+          "title": "Computer Science Capstone Project II",
+          "credits": 3,
+          "prereqs": ["CSE485"]
+        },
+        {
+          "code": "CSE412",
+          "title": "Database Management",
+          "credits": 3,
+          "prereqs": ["CSE310"]
+        },
+        {
+          "code": "CSE434",
+          "title": "Computer Networks",
+          "credits": 3,
+          "prereqs": ["CSE330"]
+        }
+      ]
+    }
+  ]
+}
