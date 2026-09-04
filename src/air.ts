@@ -18,7 +18,7 @@ export function getAirConfig(): AirConfig {
   return {
     baseUrl: (process.env.AIR_BASE_URL ?? "https://openai.rc.asu.edu/v1").replace(/\/$/, ""),
     apiKey: process.env.AIR_API_KEY,
-    textModel: process.env.AIR_TEXT_MODEL ?? "qwen38-27b",
+    textModel: process.env.AIR_TEXT_MODEL ?? "glm-5-3-flash",
     reasonerModel:
       process.env.AIR_REASONER_MODEL ?? "qwen3-235b-a22b-thinking-2507",
     asrModel: process.env.AIR_ASR_MODEL ?? "qwen3-asr-1p7b",
@@ -88,7 +88,7 @@ export async function requestAirText(options: {
         max_tokens: 220
       })
     },
-    8_000
+    20_000
   );
 
   const payload = (await response.json()) as {
