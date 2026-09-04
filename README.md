@@ -7,10 +7,19 @@ Stateless Vercel backend for the Compass ASU AIR Spark Challenge demo. It provid
 ```bash
 npm install
 cp .env.example .env.local
-npm run dev
+npx vercel dev
 ```
 
-AIR credentials are optional for planning, rerouting, and chat because those routes have deterministic fallbacks. ASR requires AIR. TTS returns a text fallback when AIR is unavailable.
+Set `AIR_API_KEY` in `.env.local` to enable the ASU AIR integration. The local
+file is ignored by git and must never be committed. This project uses
+`glm-5-3-flash` for chat and plan explanations and
+`qwen3-235b-a22b-thinking-2507` for reroute reasoning by default. Both models
+are served through the OpenAI-compatible endpoint configured by `AIR_BASE_URL`.
+
+AIR credentials are optional for planning, rerouting, and chat because those
+routes have deterministic fallbacks. ASR requires AIR. TTS returns a text
+fallback when AIR is unavailable. The voice model variables in `.env.example`
+are optional overrides and are independent of the text-model selection.
 
 ## API
 
@@ -41,7 +50,14 @@ The frontend must retain the active plan and chat context; Vercel Functions do n
 
 ## Deploy
 
-Import this repository into Vercel and configure the variables from `.env.example`. Set `FRONTEND_ORIGIN` to the exact deployed frontend origin. The app uses standard TypeScript functions under `api/` and requires no framework.
+Create or import the project in Vercel, then configure `AIR_API_KEY`,
+`AIR_BASE_URL`, `AIR_TEXT_MODEL`, and `AIR_REASONER_MODEL` for Preview and
+Production. Configure the same variables for Development when using
+`vercel dev`, which injects that remote environment into the local server.
+Store the secret through the Vercel dashboard or CLI; do not upload `.env.local`
+or the OpenCode configuration. Set `FRONTEND_ORIGIN` to the exact deployed
+frontend origin when a browser frontend is ready. The app uses standard
+TypeScript functions under `api/` and requires no framework.
 
 ## Validation
 
