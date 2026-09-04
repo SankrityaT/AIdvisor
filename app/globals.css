@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+/* ── Compass / AIVISOR theme — ASU maroon + gold on charcoal ──────────
+   SHARED FILE. Feature agents must NOT edit this. Use the tokens below
+   as Tailwind utilities: bg-ink-800, text-gold, border-maroon, etc.
+   Tailwind v4 — theme lives here, there is no tailwind.config.js.       */
+
+@theme {
+  /* ASU brand */
+  --color-maroon-50:  #fbeff3;
+  --color-maroon-300: #c95678;
+  --color-maroon:     #8c1d40;
+  --color-maroon-700: #6b1531;
+  --color-maroon-900: #400c1d;
+
+  --color-gold-200:   #ffe89a;
+  --color-gold:       #ffc627;
+  --color-gold-600:   #d19c00;
+
+  /* surfaces */
+  --color-ink-950:    #0b0a0d;
+  --color-ink-900:    #131117;
+  --color-ink-850:    #191620;
+  --color-ink-800:    #221d2b;
+  --color-ink-700:    #2f2839;
+  --color-ink-600:    #453c52;
+
+  /* semantic */
+  --color-teal:       #2ec4b6;   /* rerouted path */
+  --color-teal-700:   #1b8a80;
+  --color-alert:      #ff6b4a;   /* amber-coral: legible against maroon */
+  --color-alert-700:  #c94526;
+  --color-mist:       #b9b2c4;   /* muted body text */
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --animate-pulse-slow: pulse-slow 2.4s ease-in-out infinite;
+  --animate-dash:       dash 1.2s linear infinite;
+  --animate-rise:       rise .5s cubic-bezier(.2,.8,.2,1) both;
+}
+
+@keyframes pulse-slow { 0%,100%{opacity:1} 50%{opacity:.45} }
+@keyframes dash       { to { stroke-dashoffset: -24; } }
+@keyframes rise       { from { opacity:0; transform: translateY(10px) } to { opacity:1; transform:none } }
+
+html, body {
+  background:
+    radial-gradient(1100px 620px at 12% -8%, rgba(140,29,64,.42), transparent 62%),
+    radial-gradient(820px 520px at 92% 4%, rgba(255,198,39,.10), transparent 60%),
+    var(--color-ink-950);
+  color: #f4f1f7;
+  font-family: var(--font-sans);
+  min-height: 100%;
+}
+
+::selection { background: var(--color-gold); color: var(--color-ink-950); }
+
+/* thin scrollbars so panels don't look like a generic dashboard */
+* { scrollbar-width: thin; scrollbar-color: var(--color-ink-600) transparent; }
+*::-webkit-scrollbar { width: 8px; height: 8px; }
+*::-webkit-scrollbar-thumb { background: var(--color-ink-600); border-radius: 99px; }
+*::-webkit-scrollbar-track { background: transparent; }
