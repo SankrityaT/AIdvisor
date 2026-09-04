@@ -1,7 +1,7 @@
 "use client";
 
 // ── VoiceControl ───────────────────────────────────────────────────────
-// Push-to-talk mic + spoken replies for AIDVisor.
+// Push-to-talk mic + spoken replies for AIDvisor.
 //   • click to start, click again to stop (auto-stops at 15s)
 //   • POSTs the clip to /api/voice/transcribe, hands text back via onTranscript
 //   • speaks answers via /api/voice/speak when speakText.nonce changes
@@ -459,14 +459,14 @@ export default function VoiceControl({
         : thinking
           ? "Transcribing…"
           : speaking
-            ? "AIDVisor is speaking"
+            ? "AIDvisor is speaking"
             : "Tap to ask out loud";
 
   return (
     <section className="rounded-2xl border border-ink-700 bg-ink-900/70 p-4">
       <header className="mb-4 flex items-center justify-between gap-3">
         <div>
-          <h3 className="text-sm font-semibold tracking-wide text-gold">Ask AIDVisor</h3>
+          <h3 className="text-sm font-semibold tracking-wide text-gold">Ask AIDvisor</h3>
           <p className="text-xs text-mist">Speak your question, hear the answer.</p>
         </div>
         <button

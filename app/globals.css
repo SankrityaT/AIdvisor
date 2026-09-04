@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* ── Compass / AIDVisor theme — ASU maroon + gold on charcoal ──────────
+/* ── AIDvisor / AIDvisor theme — ASU maroon + gold on charcoal ──────────
    SHARED FILE. Feature agents must NOT edit this. Use the tokens below
    as Tailwind utilities: bg-ink-800, text-gold, border-maroon, etc.
    Tailwind v4 — theme lives here, there is no tailwind.config.js.       */

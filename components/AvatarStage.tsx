@@ -65,7 +65,7 @@ export default function AvatarStage() {
                 </linearGradient>
               </defs>
             </svg>
-            <span className="avatar-name">AIDVisor</span>
+            <span className="avatar-name">AIDvisor</span>
             <span className="avatar-tag">avatar · placeholder</span>
           </div>
           <span className="avatar-status">

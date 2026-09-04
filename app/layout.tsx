@@ -12,9 +12,9 @@ const geistSans = Geist({ subsets: ["latin"], variable: "--font-geist-sans", dis
 const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono", display: "swap" });
 
 export const metadata: Metadata = {
-  title: "AIDVisor — Your AI Advisor for ASU",
+  title: "AIDvisor — Your AI Advisor for ASU",
   description:
-    "AIDVisor is the AI advisor every Sun Devil can turn to. It builds your route to graduation and reroutes it live the moment a class falls through.",
+    "AIDvisor is the AI advisor every Sun Devil can turn to. It builds your route to graduation and reroutes it live the moment a class falls through.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

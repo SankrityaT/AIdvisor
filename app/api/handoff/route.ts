@@ -1,5 +1,5 @@
 // ── Advisor handoff — the honest fallback ──────────────────────────────
-// When no valid reroute exists, Compass stops pretending and writes the
+// When no valid reroute exists, AIDvisor stops pretending and writes the
 // student a one-page advisor-prep note: what broke, which prereq chains it
 // blocks, exactly which reroutes were attempted and why each failed, and
 // the ONE question only a human advisor can answer.

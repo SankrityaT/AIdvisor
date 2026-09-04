@@ -1,4 +1,4 @@
-# AIDVisor — Compass
+# AIDvisor
 
 **An AI academic advisor that builds a student a personalized route to graduation, then reroutes it live the moment reality gets in the way.**
 
@@ -9,7 +9,7 @@ Built for the **ASU AIR Spark Challenge**. Every model call runs on ASU's AIR ga
 ## The problem
 
 A class fills up. A course isn't offered. Today that means a student finds out three
-weeks later, in an advisor's inbox. AIDVisor reroutes the degree plan in about
+weeks later, in an advisor's inbox. AIDvisor reroutes the degree plan in about
 fourteen seconds — and keeps the graduation date.
 
 ## Demo path (90 seconds)
@@ -22,7 +22,7 @@ fourteen seconds — and keeps the graduation date.
    vs. best career fit. A judge picks one and says why in a sentence.
 6. **Apply the reroute** — old plan struck through, new plan in teal, confidence back
    to 91, **graduation date unchanged**.
-7. **Ask AIDVisor out loud** — speech in, spoken answer out, grounded in *your* plan.
+7. **Ask AIDvisor out loud** — speech in, spoken answer out, grounded in *your* plan.
 
 ## The multi-agent pipeline is real
 
@@ -52,7 +52,7 @@ degraded mid-demo, the reroute still works.
 - Drag-to-reschedule what-if validation against the prereq graph
 - Time-preference conflict checking
 - Advisor handoff document + ready-to-send email for genuine dead ends
-- **AIDVisor**, an animated Lottie mascot who reacts to what's happening
+- **AIDvisor**, an animated Lottie mascot who reacts to what's happening
 
 ## Run it
 

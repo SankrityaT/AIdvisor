@@ -355,7 +355,7 @@ export default function WhatIfBoard({ flowchart, majorMap, onCommit, className =
         <h2 className="text-sm font-semibold tracking-wide text-gold-200">What-if mode</h2>
         <p className="mt-2 max-w-md text-sm text-mist">
           No route yet. Once your plan is generated you can drag any stop to a different
-          station and Compass will tell you instantly whether the prerequisite chain survives.
+          station and AIDvisor will tell you instantly whether the prerequisite chain survives.
         </p>
       </section>
     );
@@ -364,7 +364,7 @@ export default function WhatIfBoard({ flowchart, majorMap, onCommit, className =
   // ── verdict bar content ──────────────────────────────────────────────
   let barTone = "border-ink-700 bg-ink-850 text-mist";
   let barTitle = "Drag a stop to another station";
-  let barDetail = "Compass checks every downstream prerequisite before you let go. Keyboard: focus a stop and press Enter.";
+  let barDetail = "AIDvisor checks every downstream prerequisite before you let go. Keyboard: focus a stop and press Enter.";
 
   if (hoverVerdict) {
     if (hoverVerdict.kind === "ok") {

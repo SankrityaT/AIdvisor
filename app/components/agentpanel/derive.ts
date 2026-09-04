@@ -165,7 +165,7 @@ export function runTitle(entries: AgentEntry[]): string {
   if (keys.has("handoff")) return "Advisor handoff";
   if (keys.has("relevance")) return "Course relevance";
   if (keys.has("narrator")) return "Outlook";
-  if (keys.has("chat")) return "AIDVisor answer";
+  if (keys.has("chat")) return "AIDvisor answer";
   return "Agent run";
 }
 

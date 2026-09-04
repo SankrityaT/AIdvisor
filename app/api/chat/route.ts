@@ -1,4 +1,4 @@
-// ── /api/chat — AIDVisor, grounded in the student's real plan ──────────
+// ── /api/chat — AIDvisor, grounded in the student's real plan ──────────
 // SERVER ONLY. Streams AgentEvents over SSE (so the Agent Activity panel
 // lights up while the student is talking), then one { reply } result.
 
@@ -112,7 +112,7 @@ export function buildSystemPrompt(ctx: ChatContext): string {
   const parts: string[] = [];
 
   parts.push(
-    "You are AIDVisor, the academic advisor inside Compass. You speak to ONE student about THEIR route to graduation, which is written out in full below. Everything you say must come from this data.",
+    "You are AIDvisor, the academic advisor inside AIDvisor. You speak to ONE student about THEIR route to graduation, which is written out in full below. Everything you say must come from this data.",
   );
 
   // Student

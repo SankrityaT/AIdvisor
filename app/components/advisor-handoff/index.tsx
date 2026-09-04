@@ -1,7 +1,7 @@
 "use client";
 
 // ── Advisor handoff document ───────────────────────────────────────────
-// The honest fallback. When Compass genuinely cannot reroute, this is the
+// The honest fallback. When AIDvisor genuinely cannot reroute, this is the
 // artifact the student walks into advising with: one page, printable, and
 // deliberately LIGHT — paper, not app chrome — so it reads as a document
 // meant to leave the screen.
@@ -273,7 +273,7 @@ export default function AdvisorHandoffDoc({
         </p>
         <p className="mt-2 text-[13px] leading-relaxed text-mist">
           Nothing to hand off. This document is generated only when no valid reroute exists —
-          Compass writes the advisor prep note instead of guessing.
+          AIDvisor writes the advisor prep note instead of guessing.
         </p>
       </div>
     );
@@ -316,7 +316,7 @@ export default function AdvisorHandoffDoc({
           <header className="flex flex-wrap items-start justify-between gap-4 border-b border-[#e2dcd4] pb-5">
             <div>
               <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#8c1d40]">
-                Compass · Advisor handoff
+                AIDvisor · Advisor handoff
               </p>
               <h2 className="mt-1.5 text-2xl font-semibold leading-tight tracking-tight text-[#171319]">
                 {handoff.student_name}
@@ -355,10 +355,10 @@ export default function AdvisorHandoffDoc({
 
           <footer className="mt-7 flex flex-wrap items-center justify-between gap-2 border-t border-[#e2dcd4] pt-3">
             <p className="text-[10.5px] leading-snug text-[#8a8194]">
-              Prepared by Compass from the student&rsquo;s major map and live registration state.
+              Prepared by AIDvisor from the student&rsquo;s major map and live registration state.
               Prerequisite conclusions are validated deterministically, not inferred.
             </p>
-            <p className="text-[10.5px] uppercase tracking-[0.14em] text-[#a49bad]">ASU · AIDVisor</p>
+            <p className="text-[10.5px] uppercase tracking-[0.14em] text-[#a49bad]">ASU · AIDvisor</p>
           </footer>
         </div>
       </article>

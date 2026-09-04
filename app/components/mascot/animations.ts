@@ -1,5 +1,5 @@
 /**
- * Lottie animation data for AIDVisor, one file per state.
+ * Lottie animation data for AIDvisor, one file per state.
  *
  * Kept as a barrel so `index.tsx` can `await import("./animations")` behind a
  * try/catch — if anything here is missing or malformed the component silently
