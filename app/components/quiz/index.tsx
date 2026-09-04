@@ -239,7 +239,7 @@ export default function Quiz({ onComplete, submitting = false }: QuizProps) {
 
   return (
     <section
-      aria-label="Compass onboarding"
+      aria-label="AIDvisor onboarding"
       className="mx-auto w-full max-w-2xl px-5 py-8 sm:py-12"
     >
       <Header compact={step > 0 || pending} />
@@ -423,7 +423,7 @@ function Key({ children }: { children: ReactNode }) {
 function Header({ compact }: { compact: boolean }) {
   return (
     <header className={compact ? "flex items-center gap-3" : "flex items-start gap-4"}>
-      {/* ── MASCOT SLOT: lead drops the AIVISOR mascot in here at integration ── */}
+      {/* ── MASCOT SLOT: lead drops the AIDvisor mascot in here at integration ── */}
       <div
         data-slot="mascot"
         className={compact ? "h-11 w-11 shrink-0" : "h-20 w-20 shrink-0"}
@@ -431,7 +431,7 @@ function Header({ compact }: { compact: boolean }) {
 
       <div className="min-w-0">
         <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1.5">
-          <CompassMark className={compact ? "h-5 w-5 text-gold" : "h-7 w-7 text-gold"} />
+          <BrandMark className={compact ? "h-5 w-5 text-gold" : "h-7 w-7 text-gold"} />
           <span
             className={
               compact
@@ -439,7 +439,7 @@ function Header({ compact }: { compact: boolean }) {
                 : "text-3xl font-semibold tracking-tight text-white sm:text-4xl"
             }
           >
-            Compass
+            AIDvisor
           </span>
           {!compact ? (
             <span className="rounded-full border border-maroon-300/40 bg-maroon/30 px-2.5 py-1 text-[11px] font-medium tracking-wide text-maroon-50">
@@ -458,7 +458,7 @@ function Header({ compact }: { compact: boolean }) {
   );
 }
 
-function CompassMark({ className }: { className?: string }) {
+function BrandMark({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" className={className}>
       <circle

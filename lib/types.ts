@@ -1,4 +1,4 @@
-// ── Compass shared types ───────────────────────────────────────────────
+// ── AIDvisor shared types ───────────────────────────────────────────────
 // SHARED CONTRACT. Feature agents import from here read-only and MUST NOT
 // edit this file. If you need a new shape, define it inside your own
 // component folder and keep it structurally compatible with these.

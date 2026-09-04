@@ -28,7 +28,7 @@ export const AGENTS: Record<AgentKey, AgentSpec> = {
   narrator:        { key: "narrator",        role: "Narrator", label: "Writing your final-semester outlook",            model: MODELS.planner },
   relevance:       { key: "relevance",       role: "Advisor",  label: "Explaining why each course fits your goal",      model: MODELS.fast },
   handoff:         { key: "handoff",         role: "Escalate", label: "Preparing a human advisor handoff",              model: MODELS.reasoner },
-  chat:            { key: "chat",            role: "AIVISOR", label: "AIVISOR is answering",                          model: MODELS.chat },
+  chat:            { key: "chat",            role: "AIDvisor", label: "AIDvisor is answering",                          model: MODELS.chat },
 };
 
 export type Emit = (e: AgentEvent) => void;

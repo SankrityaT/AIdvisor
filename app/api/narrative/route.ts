@@ -25,7 +25,7 @@ import {
 } from "@/app/components/senior-narrative/compose";
 
 export const runtime = "nodejs";
-export const maxDuration = 300;
+export const maxDuration = 60;
 
 interface Body {
   quiz?: QuizAnswers;

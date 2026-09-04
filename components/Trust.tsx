@@ -25,7 +25,7 @@ const items = [
     title: "Knows your campus, your major",
     body: (
       <>
-        West Campus parking isn&apos;t Tempe parking. AIVISOR answers for{" "}
+        West Campus parking isn&apos;t Tempe parking. AIDvisor answers for{" "}
         <em>your</em> context, not a generic one.
       </>
     ),
@@ -41,7 +41,7 @@ const items = [
     title: "Hands you to a human when it counts",
     body: (
       <>
-        Withdrawals, health, holds, appeals — AIVISOR knows when a person needs to
+        Withdrawals, health, holds, appeals — AIDvisor knows when a person needs to
         be in the room and routes you there.
       </>
     ),
@@ -54,7 +54,7 @@ export default function Trust() {
       <div className="wrap trust-grid">
         <Reveal>
           <div>
-            <span className="mono">Why trust AIVISOR</span>
+            <span className="mono">Why trust AIDvisor</span>
             <h2
               style={{
                 fontSize: "clamp(2rem,3.6vw,2.9rem)",
@@ -66,7 +66,7 @@ export default function Trust() {
             </h2>
             <p style={{ color: "var(--muted)", fontSize: "1.05rem" }}>
               A wrong answer about registration deadlines is worse than no
-              answer. So AIVISOR is built around honesty by default.
+              answer. So AIDvisor is built around honesty by default.
             </p>
             <div className="trust-list">
               {items.map((it) => (
@@ -86,7 +86,7 @@ export default function Trust() {
           <div
             className="chat-panel"
             role="img"
-            aria-label="Example AIVISOR answer with source citation"
+            aria-label="Example AIDvisor answer with source citation"
           >
             <div className="chat-head">
               <span className="cmark">
@@ -98,7 +98,7 @@ export default function Trust() {
                 </svg>
               </span>
               <span>
-                <b>AIVISOR</b>
+                <b>AIDvisor</b>
                 <small>West Campus · Biology &apos;27</small>
               </span>
             </div>

@@ -6,7 +6,7 @@ import { loadData } from "@/lib/data";
 import type { QuizAnswers } from "@/lib/types";
 
 export const runtime = "nodejs";
-export const maxDuration = 300;
+export const maxDuration = 60;
 
 export async function POST(req: Request) {
   const body = (await req.json().catch(() => ({}))) as { quiz?: QuizAnswers };

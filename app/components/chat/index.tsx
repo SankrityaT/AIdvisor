@@ -1,6 +1,6 @@
 "use client";
 
-// ── AIVISOR chat panel ────────────────────────────────────────────────
+// ── AIDvisor chat panel ────────────────────────────────────────────────
 // Presentational + self-contained. Talks to /api/chat over the shared SSE
 // pipeline so the lead's Agent Activity panel lights up during chat.
 // NOTE: never import lib/asuair here — that is server-only.
@@ -124,10 +124,10 @@ export default function ChatPanel({
       {/* header */}
       <header className="flex items-center gap-3 border-b border-ink-700 px-4 py-3">
         <span className="grid h-8 w-8 place-items-center rounded-full border border-maroon/60 bg-maroon/25">
-          <CompassMark className="h-4 w-4 text-gold" />
+          <BrandMark className="h-4 w-4 text-gold" />
         </span>
         <div className="min-w-0">
-          <h2 className="text-sm font-semibold tracking-tight text-white">AIVISOR</h2>
+          <h2 className="text-sm font-semibold tracking-tight text-white">AIDvisor</h2>
           <p className="truncate text-xs text-mist">
             Answers come from your route, not the internet
           </p>
@@ -171,7 +171,7 @@ export default function ChatPanel({
                   data-slot="mascot-small"
                   className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center overflow-hidden rounded-full border border-maroon/60 bg-maroon/25"
                 >
-                  <CompassMark data-slot-fallback className="h-3.5 w-3.5 text-gold" />
+                  <BrandMark data-slot-fallback className="h-3.5 w-3.5 text-gold" />
                 </div>
                 <div className="min-w-0">
                   <p
@@ -195,7 +195,7 @@ export default function ChatPanel({
               data-slot="mascot-small"
               className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center overflow-hidden rounded-full border border-maroon/60 bg-maroon/25"
             >
-              <CompassMark data-slot-fallback className="h-3.5 w-3.5 text-gold" />
+              <BrandMark data-slot-fallback className="h-3.5 w-3.5 text-gold" />
             </div>
             <div className="flex items-center gap-1.5 rounded-2xl rounded-tl-sm border border-maroon/50 bg-maroon/20 px-3.5 py-3">
               {[0, 1, 2].map((i) => (
@@ -244,8 +244,8 @@ export default function ChatPanel({
           value={input}
           onChange={(e) => setInput(e.target.value)}
           disabled={busy}
-          placeholder={busy ? "AIVISOR is thinking…" : "Ask about your plan…"}
-          aria-label="Ask AIVISOR about your plan"
+          placeholder={busy ? "AIDvisor is thinking…" : "Ask about your plan…"}
+          aria-label="Ask AIDvisor about your plan"
           className="min-w-0 flex-1 rounded-xl border border-ink-700 bg-ink-850 px-3.5 py-2.5 text-sm text-white outline-none transition-colors placeholder:text-mist/70 focus:border-gold/50 disabled:opacity-60"
         />
         <button
@@ -269,7 +269,7 @@ export default function ChatPanel({
   );
 }
 
-function CompassMark(props: React.SVGProps<SVGSVGElement>) {
+function BrandMark(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
       <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8" />

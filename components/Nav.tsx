@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 const links = [
-  { href: "#handles", label: "What AIVISOR handles" },
+  { href: "#handles", label: "What AIDvisor handles" },
   { href: "#how", label: "How it works" },
-  { href: "#trust", label: "Why trust AIVISOR" },
+  { href: "#trust", label: "Why trust AIDvisor" },
   { href: "#stories", label: "Student stories" },
 ];
 
@@ -34,12 +34,12 @@ export default function Nav() {
   return (
     <header className={`nav ${scrolled ? "scrolled" : ""}`.trim()}>
       <div className="wrap nav-inner">
-        <Link className="logo" href="#top" aria-label="AIVISOR home">
+        <Link className="logo" href="#top" aria-label="AIDvisor home">
           <span className="logo-mark">
             <LogoMark />
           </span>
           <span>
-            AIVISOR
+            AIDvisor
             <small>ASU AI ADVISOR</small>
           </span>
         </Link>
@@ -57,7 +57,7 @@ export default function Nav() {
             See it in action
           </Link>
           <Link className="btn btn-primary btn-sm" href="/advisor">
-            Ask AIVISOR <span className="arrow">→</span>
+            Ask AIDvisor <span className="arrow">→</span>
           </Link>
         </div>
       </div>

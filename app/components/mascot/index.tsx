@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * AIVISOR — the face of Compass.
+ * AIDvisor — the face of AIDvisor.
  *
  * A cute little maroon-and-gold guide who *is* the AI academic advisor.
  * Renders a real Lottie animation per state when it loads, and a hand-drawn
@@ -23,7 +23,7 @@ import FallbackMascot from "./FallbackMascot";
 
 export type MascotState = "idle" | "thinking" | "alert" | "happy" | "speaking";
 
-export interface AIVISORProps {
+export interface AIDvisorProps {
   /** Which mood to play. Default "idle". */
   state?: MascotState;
   /** Rendered size in px (square). Default 120. */
@@ -47,12 +47,12 @@ type Loaded = {
   animations: Partial<Record<MascotState, object>>;
 };
 
-export default function AIVISOR({
+export default function AIDvisor({
   state = "idle",
   size = 120,
   speech,
   className,
-}: AIVISORProps) {
+}: AIDvisorProps) {
   const [loaded, setLoaded] = useState<Loaded | null>(null);
   const [failed, setFailed] = useState(false);
 
