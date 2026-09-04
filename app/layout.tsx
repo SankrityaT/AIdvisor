@@ -1,19 +1,30 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, JetBrains_Mono, Manrope, Sora } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
-const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
+// Landing page typography
+const sora = Sora({ subsets: ["latin"], variable: "--font-sora", display: "swap" });
+const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope", display: "swap" });
+const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono-jb", display: "swap" });
+
+// Advisor app typography — referenced by the @theme tokens in globals.css
+const geistSans = Geist({ subsets: ["latin"], variable: "--font-geist-sans", display: "swap" });
+const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono", display: "swap" });
 
 export const metadata: Metadata = {
-  title: "Compass — your route to graduation",
-  description: "An AI academic advisor that reroutes your degree plan the moment reality gets in the way.",
+  title: "AIVISOR — Your AI Advisor for ASU",
+  description:
+    "AIVISOR is the AI advisor every Sun Devil can turn to. It builds your route to graduation and reroutes it live the moment a class falls through.",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
+      <body
+        className={`${sora.variable} ${manrope.variable} ${jetbrainsMono.variable} ${geistSans.variable} ${geistMono.variable}`}
+      >
+        {children}
+      </body>
     </html>
   );
 }

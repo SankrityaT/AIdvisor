@@ -40,6 +40,15 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+
+
+
+
+
+
+
+
+
 # tool-generated top-level markdown (README is kept)
 /*.md
 !/README.md
